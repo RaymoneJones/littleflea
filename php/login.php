@@ -5,7 +5,7 @@
 <body>
 <?php
 //登录
-if(isset($_POST['submit'])&&($_POST['submit']=="submit")) {
+if(isset($_POST['submit'])) {
 
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
@@ -28,7 +28,7 @@ if(isset($_POST['submit'])&&($_POST['submit']=="submit")) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['no'] = $row['no'];
             $_SESSION['email'] = $row['email'];
-            echo "<meta http-equiv=\"refresh\" content=\"0;url=./home.php\">";
+            echo "<meta http-equiv=\"refresh\" content=\"0;url=home.php\">";
         } else {
             echo " <meta http-equiv=\"refresh\" content=\"0;url=./loginerror.php\">";
         }

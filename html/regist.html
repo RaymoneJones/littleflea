@@ -24,7 +24,18 @@
                 }
             }
         }
+        function what() {
 
+            var radios = document.getElementsByName("shenfen");
+
+            for (var i = 0; i < radios.length; i++) {
+
+                if (radios[i].checked == true) {
+                    i++;
+
+                }
+            }
+        }
     </script>
     <style>
         body
@@ -112,13 +123,13 @@
                         <i class="fa fa-mobile-phone"></i>
                     </div>
                     <i class="glyphicon glyphicon-user"></i>
-                    <label for="sf">身份类型&nbsp;&nbsp;</label>
+                    <label for="sf">身份类型（必选）</label>
                     <div  id="sf">
                         <input id="in" type="radio" name="shenfen" value="0" />
                         <label for="in">校内</label>
                         <input id="out" type="radio"  name="shenfen" value="1"/>
                         <label for="out">校外</label>
-                    </div>
+
                     <div id="id1"  style="display: none;">
                         <div class="form-group">
                             <input type="text" class="form-control" id="sno" name="sno"placeholder="学    号">
@@ -140,7 +151,7 @@
                         </div>
                     </div>
                     <div align="center" >
-                        <button type="submit" name="submit"  class="mybt">注册</button>
+                        <button type="submit" name="submit"  class="mybt" onclick="what">注册</button>
                     </div>
                 </form>
 
