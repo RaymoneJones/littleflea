@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>注册——“小跳蚤”二手交易平台</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <script type="text/javascript">
+        window.onload = function() {
+            var radios = document.getElementsByName('shenfen');
+            for (var i = 0; i < radios.length; i++) {
+                radios[i].indexs = i + 1;
+                radios[i].onchange = function () {
+                    if (this.checked) {
+                        document.getElementById("id1").style.display="none";
+                        document.getElementById("id2").style.display="none";
+                        document.getElementById("id" + this.indexs).style.display="block";
+                    }
+                }
+            }
+        }
+
+    </script>
+    <style>
+        body
+        {
+            background-image:url("../picture/flea.png");
+            background-repeat:no-repeat;
+            background-color: #00b4ef;
+        }
+        .mybt{
+            alignment: center;
+            font-size: 14px;
+            color: #fff;
+            background: #00b4ef;
+            border-radius: 30px;
+            padding: 10px 25px;
+            border: none;
+            text-transform: capitalize;
+            transition: all 0.5s ease 0s;
+        }
+
+    </style>
+</head>
+<body>
+<div >
+    <div class="container" style="opacity: 0%">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal" method="post" action="../php/register.php" >
+                    <span class="heading">用户注册</span>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="username" name="username"placeholder="用户名">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="密　码">
+                        <i class="fa fa-lock"></i>
+                        <a  data-toggle="modal" data-target="#myModal" class="fa fa-question-circle"></a>
+                    </div>
+
+<!--                    模态框-->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body" >
+                                    密码不能包括空格；
+                                    <br>
+                                    长度为6-16个字符；
+                                    <br>
+                                    可使用字母、数字、符合组合；
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+
+<!--                    模态框-->
+                    <div class="form-group help">
+                        <input type="password" class="form-control" id="repassword" name="repassword" placeholder="再次输入密码">
+                        <i class="fa fa-lock"></i>
+                        <a data-toggle="modal" data-target="#myModal1" class="fa fa-question-circle"></a>
+                    </div>
+                    <!--                    模态框-->
+                    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body" >
+                                   两次输入的密码需保持一致！
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+
+                    <!--                    模态框-->
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email"placeholder="邮    箱">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="phone" name="phone"placeholder="手机号">
+                        <i class="fa fa-mobile-phone"></i>
+                    </div>
+                    <i class="glyphicon glyphicon-user"></i>
+                    <label for="sf">身份类型&nbsp;&nbsp;</label>
+                    <div  id="sf">
+                        <input id="in" type="radio" name="shenfen" value="0" />
+                        <label for="in">校内</label>
+                        <input id="out" type="radio"  name="shenfen" value="1"/>
+                        <label for="out">校外</label>
+                    </div>
+                    <div id="id1"  style="display: none;">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="sno" name="sno"placeholder="学    号">
+                            <i class="fa fa-mortar-board"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="realname1" name="realname1"placeholder="真实姓名">
+                            <i class="fa fa-address-book"></i>
+                        </div>
+                    </div>
+                    <div id="id2" style="display: none;">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="idno" name="idno"placeholder="身份证号">
+                            <i class="fa fa-address-card-o"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="realname2" name="realname2"placeholder="真实姓名">
+                            <i class="fa fa-address-book"></i>
+                        </div>
+                    </div>
+                    <div align="center" >
+                        <button type="submit" name="submit"  class="mybt">注册</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
