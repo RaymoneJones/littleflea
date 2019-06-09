@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>“小跳蚤”二手交易平台</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <style>
+        body
+        {
+            background-image:url("picture/flea.png");
+            background-repeat:no-repeat;
+            background-color: #00b4ef;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="container" style="opacity: 0%">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <form class="form-horizontal" method="post" action="php/login.php" >
+                <span class="heading">用户登录</span>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" name="username"placeholder="用户名或电子邮件">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group help">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密　码">
+                    <i class="fa fa-lock"></i>
+                    <a href="#" class="fa fa-question-circle"></a>
+                </div>
+                <div class="form-group">
+                    <div class="main-checkbox">
+                        <input type="checkbox" value="None" id="checkbox1" name="check"/>
+                        <label for="checkbox1"></label>
+                    </div>
+                    <span class="text">Remember me</span>
+
+                        <button type="submit" name="submit" class="btn btn-default" >登录</button>
+<!--                        <button type="submit" name="register" class="btn btn-default active">注册</button>-->
+                    <p>
+                        没有账号？请
+                        <a href="regist.html">注册</a>
+                        <a href="#" class="wj">忘记密码？</a>
+                    </p>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<div style="position: fixed; bottom:0; left:49%">
+    <a href="adminlogin.html"  >管理登录</a>
+</div>
+</body>
+</html>
+

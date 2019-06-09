@@ -15,6 +15,7 @@ if(isset($_POST['submit'])) {
     if (strpos($username, $str) === false) {     //使用绝对等于
         //包含数据库连接文件
         include('conn.php');
+        $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
         //检测用户名及密码是否正确
         $check_query = mysqli_query($conn, "select * from tb_user where username='$username' and password='$password' limit 1");
         if (!$check_query) {
@@ -28,7 +29,7 @@ if(isset($_POST['submit'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['no'] = $row['no'];
             $_SESSION['email'] = $row['email'];
-            echo "<meta http-equiv=\"refresh\" content=\"0;url=home.php\">";
+            echo "<meta http-equiv=\"refresh\" content=\"0;url=../home.html\">";
         } else {
             echo " <meta http-equiv=\"refresh\" content=\"0;url=./loginerror.php\">";
         }
@@ -42,6 +43,7 @@ if(isset($_POST['submit'])) {
             //包含数据库连接文件
             include('conn.php');
             //检测用户名及密码是否正确
+            $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
             $check_query = mysqli_query($conn, "select * from tb_user where email='$username' and password='$password' limit 1");
             if (!$check_query) {
                 printf("Error: %s\n", mysqli_error($conn));

@@ -35,21 +35,21 @@
             <div>
                 <ul class="nav nav-pills">
                     <li class="active"><a href="#">首页</a></li>
-                    <li><a href="#">标签1</a></li>
-                    <li><a href="#">标签2</a></li>
-                    <li><a href="#">标签3</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            标签4<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">下拉</a></li>
-                            <li><a href="#">下拉</a></li>
-                            <li><a href="#">下拉</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">分离的链接</a></li>
-                        </ul>
-                    </li>
+<!--                    <li><a href="#">标签1</a></li>-->
+<!--                    <li><a href="#">标签2</a></li>-->
+<!--                    <li><a href="#">标签3</a></li>-->
+<!--                    <li class="dropdown">-->
+<!--                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">-->
+<!--                            标签4<span class="caret"></span>-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu">-->
+<!--                            <li><a href="#">下拉</a></li>-->
+<!--                            <li><a href="#">下拉</a></li>-->
+<!--                            <li><a href="#">下拉</a></li>-->
+<!--                            <li class="divider"></li>-->
+<!--                            <li><a href="#">分离的链接</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#"><span class="glyphicon glyphicon-envelope"></span>消息
@@ -105,48 +105,64 @@
         </form>
     </nav>
 </div>
-<!--    轮播广告开始-->
-<div>
-    <div class="col-md-8 col-md-push-2" style="float: ">
-        <div id="myCarousel" class="carousel slide">
-            <!-- 轮播（Carousel）指标 -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <!-- 轮播（Carousel）项目 -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="../picture/flea.png" alt="First slide">
-                    <div class="carousel-caption">标题 1</div>
+
+    <!--    轮播广告开始-->
+    <div>
+        <div class="col-md-8 col-md-push-2" style="float: ">
+            <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="../picture/flea.png" alt="First slide">
+                        <div class="carousel-caption">标题 1</div>
+                    </div>
+                    <div class="item">
+                        <img src="../picture/flea.png" alt="Second slide">
+                        <div class="carousel-caption">标题 2</div>
+                    </div>
+                    <div class="item">
+                        <img src="../picture/flea.png" alt="Third slide">
+                        <div class="carousel-caption">标题 3</div>
+                    </div>
                 </div>
-                <div class="item">
-                    <img src="../picture/flea.png" alt="Second slide">
-                    <div class="carousel-caption">标题 2</div>
-                </div>
-                <div class="item">
-                    <img src="../picture/flea.png" alt="Third slide">
-                    <div class="carousel-caption">标题 3</div>
-                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <!-- 轮播（Carousel）导航 -->
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
     </div>
+<!--侧边导航栏-->
+<div id="fixedMenu1"  style="width: 10%;background-color: transparent;border: transparent">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="width: auto">
+        <form class="navbar-form navbar-left" role="search" style="margin-left: 30%;">
+            <!--            style="margin-left: 30%;"-->
+            <div class="form-group" style="width: 180%">
+                <div style="float: left;width: auto" >
+                    <input type="text" class="form-control" placeholder="搜一下就发现宝贝了！" style="width: 200%;float: left">
+                </div>
+                <div style="float: right;width: auto">
+                    <button type="submit" class="btn btn-default" style="float: left" >搜索</button>
+                </div>
+
+            </div>
+
+        </form>
+    </nav>
 </div>
-<!---->
-<div>
 
 
-</div>
 
 
 
@@ -177,6 +193,20 @@
     $(function () {
         var ie6 = /msie 6/i.test(navigator.userAgent)
             , dv = $('#fixedMenu'), st;
+        dv.attr('otop', dv.offset().top); //存储原来的距离顶部的距离
+        $(window).scroll(function () {
+            st = Math.max(document.body.scrollTop || document.documentElement.scrollTop);
+            if (st >= parseInt(dv.attr('otop'))) {
+                if (ie6) {//IE6不支持fixed属性，所以只能靠设置position为absolute和top实现此效果
+                    dv.css({ position: 'absolute', top: st });
+                }
+                else if (dv.css('position') != 'fixed') dv.css({ 'position': 'fixed', top: 0 });
+            } else if (dv.css('position') != 'static') dv.css({ 'position': 'static' });
+        });
+    });
+    $(function () {
+        var ie6 = /msie 6/i.test(navigator.userAgent)
+            , dv = $('#fixedMenu1'), st;
         dv.attr('otop', dv.offset().top); //存储原来的距离顶部的距离
         $(window).scroll(function () {
             st = Math.max(document.body.scrollTop || document.documentElement.scrollTop);
