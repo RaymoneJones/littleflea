@@ -13,13 +13,13 @@ if(isset($_GET["table"])&&$_GET["table"]=='per1'){ //判断所需要的参数是
     $row=$conn->getRowsArray($sql);
     echo json_encode($row);
 
-}else if(isset($_GET["table"])&&$_GET["table"]=='mat1'){
-    $sql="select * from tb_matter";
+}else if(isset($_GET["table"])&&$_GET["table"]=='goods1'){
+    $sql="select * from tb_goods  where goods_status='0'";
     $row=$conn->getRowsArray($sql);
     echo json_encode($row);
 
-}else if(isset($_GET["table"])&&$_GET["table"]=='mat2'){
-    $sql="select * from tb_matter where matter_publish='".$_SESSION["username"]."' and matter_state='已完成' and matter_assess='未评价'";
+}else if(isset($_GET["table"])&&$_GET["table"]=='goods2'){
+    $sql="select * from tb_goods where goods_status='1'";
     $row=$conn->getRowsArray($sql);
     echo json_encode($row);
 

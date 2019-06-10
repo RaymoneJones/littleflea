@@ -4,7 +4,7 @@ include("../php/conn.php");
 if(isset($_GET["no"])) { //判断所需要的参数是否存在
     if (@$_GET["caozuo0"]) {
         $sql = "UPDATE tb_user SET status='1' WHERE no='" . $_GET["no"] . "'";
-        print_r($sql);
+//        print_r($sql);
         if ($conn->uidRst($sql) == 1) {
             echo "<script>window.location.href='../php/admin_registration.php';</script>";
         } else {
@@ -15,6 +15,24 @@ if(isset($_GET["no"])) { //判断所需要的参数是否存在
         $sql = "UPDATE tb_user SET status='0' WHERE no='" . $_GET["no"] . "'";
         if ($conn->uidRst($sql) == 1) {
             echo "<script>window.location.href='../php/admin_registration.php';</script>";
+        } else {
+            echo "<script>alert('确认失败');</script>";
+        }
+    }
+//    商品审核用
+    if (@$_GET["caozuo2"]) {
+        $sql = "UPDATE tb_goods SET goods_status='1' WHERE no='" . $_GET["no"] . "'";
+//        print_r($sql);
+        if ($conn->uidRst($sql) == 1) {
+            echo "<script>window.location.href='../php/admin_goods.php';</script>";
+        } else {
+            echo "<script>alert('确认失败');</script>";
+        }
+    }
+    if (@$_GET["caozuo3"]) {
+        $sql = "UPDATE tb_goods SET goods_status='0' WHERE no='" . $_GET["no"] . "'";
+        if ($conn->uidRst($sql) == 1) {
+            echo "<script>window.location.href='../php/admin_goods.php';</script>";
         } else {
             echo "<script>alert('确认失败');</script>";
         }

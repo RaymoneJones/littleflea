@@ -31,13 +31,13 @@ if(isset($_POST['submit'])) {
             $_SESSION['email'] = $row['email'];
             echo "<meta http-equiv=\"refresh\" content=\"0;url=../home.html\">";
         } else {
-            echo " <meta http-equiv=\"refresh\" content=\"0;url=./loginerror.php\">";
+            echo " <meta http-equiv=\"refresh\" content=\"0;url=loginerror.php\">";
         }
     } else {
         $email = $_POST["username"];
         // 检测邮箱是否合法
         if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
-            echo " <meta http-equiv=\"refresh\" content=\"0;url=./loginerror.php\">";
+            echo " <meta http-equiv=\"refresh\" content=\"0;url=loginerror.php\">";
             exit;
         } else {
             //包含数据库连接文件
@@ -56,9 +56,9 @@ if(isset($_POST['submit'])) {
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['no'] = $row['no'];
                 $_SESSION['email'] = $row['email'];
-                echo "<meta http-equiv=\"refresh\" content=\"0;url=./home.php\">";
+                echo "<meta http-equiv=\"refresh\" content=\"0;url=../home.html\">";
             } else {
-                echo " <meta http-equiv=\"refresh\" content=\"0;url=./loginerror.php\">";
+                echo " <meta http-equiv=\"refresh\" content=\"0;url=loginerror.php\">";
             }
         }
     }
