@@ -208,7 +208,7 @@
                                 <div class="upload_warp_text">
                                     选中{{imgList.length}}张文件，共{{bytesToSize(this.size)}}
                                 </div>
-                                <input @change="fileChange($event)" type="file" id="upload_file" multiple style="display: none"/>
+                                <input @change="fileChange($event)" type="file" id="upload_file"  name="upload_file" multiple style="display: none"/>
                                 <div class="upload_warp_img" v-show="imgList.length!=0">
                                     <div class="upload_warp_img_div" v-for="(item,index) of imgList">
                                         <div class="upload_warp_img_div_top">
