@@ -14,19 +14,19 @@ include("conn.php");
 <!--    <link href="apple-touch-icon.png" rel="apple-touch-icon">-->
     <title>“小跳蚤”二手交易平台</title>
 
-    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../plugins/ps-icon/style.css">
+    <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/plugins/ps-icon/style.css">
     <!-- CSS Library-->
-    <link rel="stylesheet" href="../plugins/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/owl-carousel/assets/owl.carousel.css">
-    <link rel="stylesheet" href="../plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
-    <link rel="stylesheet" href="../plugins/slick/slick/slick.css">
-    <link rel="stylesheet" href="../plugins/bootstrap-select/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="../plugins/Magnific-Popup/dist/magnific-popup.css">
-    <link rel="stylesheet" href="../plugins/jquery-ui/jquery-ui.min.css">
-    <link rel="stylesheet" href="../plugins/revolution/css/settings.css">
-    <link rel="stylesheet" href="../plugins/revolution/css/layers.css">
-    <link rel="stylesheet" href="../plugins/revolution/css/navigation.css">
+    <link rel="stylesheet" href="/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/plugins/owl-carousel/assets/owl.carousel.css">
+    <link rel="stylesheet" href="/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="/plugins/slick/slick/slick.css">
+    <link rel="stylesheet" href="/plugins/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/plugins/Magnific-Popup/dist/magnific-popup.css">
+    <link rel="stylesheet" href="/plugins/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/plugins/revolution/css/settings.css">
+    <link rel="stylesheet" href="/plugins/revolution/css/layers.css">
+    <link rel="stylesheet" href="/plugins/revolution/css/navigation.css">
     <!-- Custom-->
     <link rel="stylesheet" href="../css/style.css">
     <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
@@ -45,12 +45,6 @@ include("conn.php");
 <!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
 <!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
 <body >
-
-
-
-
-
-
 <div class="ps-loading">
 <div class="header--sidebar"></div>
 <header class="header">
@@ -71,21 +65,21 @@ include("conn.php");
         <div class="container-fluid">
             <div class="navigation__column left">
                 <!--		  logo-->
-                <div class="header__logo"><a class="ps-logo" href="index.html"><img src="picture/logo2.png" alt=""></a></div>
+                <div class="header__logo"><a class="ps-logo" href="/index.html"><img src="/picture/logo2.png" alt=""></a></div>
                 <!--		  picture/logo.png-->
             </div>
             <!--		菜单导航栏-->
             <div class="navigation__column center">
                 <ul class="main-menu menu">
-                    <li class="menu-item"><a href="index.html">首页</a></li>
+                    <li class="menu-item"><a href="/index.html">首页</a></li>
                     <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">查看</a>
                         <div class="mega-menu">
                             <div class="mega-wrap">
                                 <div class="mega-column">
                                     <ul class="mega-item mega-features">
-                                        <li><a href="product-listing.html">用户</a></li>
-                                        <li><a href="product-listing.html">商品</a></li>
-                                        <li><a href="product-listing.html">else</a></li>
+                                        <li><a href="/product-listing.html">用户</a></li>
+                                        <li><a href="/product-listing.html">商品</a></li>
+                                        <li><a href="/product-listing.html">else</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -96,9 +90,9 @@ include("conn.php");
                             <div class="mega-wrap">
                                 <div class="mega-column">
                                     <ul class="mega-item mega-features">
-                                        <li><a href="product-listing.html">注册审核</a></li>
-                                        <li><a href="product-listing.html">商品审核</a></li>
-                                        <li><a href="product-listing.html">else</a></li>
+                                        <li><a href="/product-listing.html">注册审核</a></li>
+                                        <li><a href="/product-listing.html">商品审核</a></li>
+                                        <li><a href="/product-listing.html">else</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -125,7 +119,7 @@ include("conn.php");
     </div>
 </div>
 <main class="ps-main">
-    <div class="ps-footer bg--cover" data-background="images/background/parallax.jpg">
+    <div class="ps-footer bg--cover" data-background="/images/background/parallax.jpg">
         <div class="ps-footer__copyright">
             <div class="ps-container">
                 <div class="row">
@@ -256,24 +250,24 @@ include("conn.php");
 
     function aFormatter1(value, row, index) {
         return [
-            '<a class="btn btn-info btn-xs" href="../revise/a_r_revise.php?no='+row.no+'&&caozuo0=1">通过</a>'
+            '<a class="btn btn-info btn-xs" href="/revise/a_r_revise.php?no='+row.no+'&&caozuo0=1">通过</a>'
         ].join("")
     }
     function aFormatter2(value, row, index) {
         return [
-            '<a class="btn btn-info btn-xs" href="../revise/a_r_revise.php?no='+row.no+'&&caozuo1=1">拒绝</a>'
+            '<a class="btn btn-info btn-xs" href="/revise/a_r_revise.php?no='+row.no+'&&caozuo1=1">拒绝</a>'
         ].join("")
     }
 
 </script>
 <!-- JS Library-->
-<script type="text/javascript" src="../plugins/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
-<script type="text/javascript" src="../plugins/owl-carousel/owl.carousel.min.js"></script>
-<script type="text/javascript" src="../plugins/gmap3.min.js"></script>
-<script type="text/javascript" src="../plugins/imagesloaded.pkgd.js"></script>
-<script type="text/javascript" src="../plugins/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="/plugins/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+<script type="text/javascript" src="/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/plugins/gmap3.min.js"></script>
+<script type="text/javascript" src="/plugins/imagesloaded.pkgd.js"></script>
+<script type="text/javascript" src="/plugins/isotope.pkgd.min.js"></script>
 <script type="text/javascript" src="/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="/plugins/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="/plugins/slick/slick/slick.min.js"></script>

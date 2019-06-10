@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>注册——“小跳蚤”二手交易平台</title>
-    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <script type="text/javascript">
         window.onload = function() {
             var radios = document.getElementsByName('shenfen');
@@ -40,7 +40,7 @@
     <style>
         body
         {
-            background-image:url("../picture/flea.png");
+            background-image:url("/picture/flea.png");
             background-repeat:no-repeat;
             background-color: #00b4ef;
         }
@@ -63,7 +63,7 @@
     <div class="container" style="opacity: 0%">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                <form class="form-horizontal" method="post" action="../php/register.php" >
+                <form class="form-horizontal" method="post" action="php/register.php" >
                     <span class="heading">用户注册</span>
                     <div class="form-group">
                         <input type="text" class="form-control" id="username" name="username"placeholder="用户名">
@@ -154,11 +154,12 @@
                     <div align="center" >
                         <button type="submit" name="submit"  class="mybt" onclick="what">注册</button>
                     </div>
+                    </div>
                 </form>
+            </div>
 
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
