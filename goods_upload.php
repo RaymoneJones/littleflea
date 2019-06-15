@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>注册——“小跳蚤”二手交易平台</title>
-    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <script src="http://www.jq22.com/jquery/vue.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--   上传-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/layer/2.3/skin/layer.css" rel="external nofollow" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/layer/2.3/layer.js"></script>
+
+<!--    标签-->
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/selectivity-jquery.css">
     <style>
         .upload_warp_img_div_del {
             position: absolute;
@@ -121,37 +130,10 @@
             text-align: center;
         }
     </style>
-    <script type="text/javascript">
-        window.onload = function() {
-            var radios = document.getElementsByName('shenfen');
-            for (var i = 0; i < radios.length; i++) {
-                radios[i].indexs = i + 1;
-                radios[i].onchange = function () {
-                    if (this.checked) {
-                        document.getElementById("id1").style.display="none";
-                        document.getElementById("id2").style.display="none";
-                        document.getElementById("id" + this.indexs).style.display="block";
-                    }
-                }
-            }
-        }
-        function what() {
-
-            var radios = document.getElementsByName("shenfen");
-
-            for (var i = 0; i < radios.length; i++) {
-
-                if (radios[i].checked == true) {
-                    i++;
-
-                }
-            }
-        }
-    </script>
     <style>
         body
         {
-            background-image:url("../picture/flea.png");
+            background-image:url("picture/flea.png");
             background-repeat:no-repeat;
             background-color: #00b4ef;
         }
@@ -174,10 +156,11 @@
     <div class="container" style="opacity: 0%">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                <form id="formform" class="form-horizontal" method="post" action="upload_img.php" >
+                <form id="formform" class="form-horizontal" >
+<!--                    method="post" action="upload_chuli.php"-->
                     <span class="heading">商品上架</span>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="goods_name" name="goods_name"placeholder="商品名">
+                        <input type="text" class="form-control" id="goods_name" name="goods_name" placeholder="商品名">
                     </div>
                     <div class="form-group">
                        <textarea form="formform" placeholder="请输入商品详情（150字）" style="width: 100%" id="goods_detail" name="goods_detail"></textarea>
@@ -186,20 +169,23 @@
                         <input type="text" class="form-control" id="goods_from" name="goods_from" placeholder="品牌/产地">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="repassword" name="repassword" placeholder="分类标签">
+                        <input type="text" class="form-control" id="goods_class" name="goods_class" placeholder="分类标签">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="goods_price" name="goods_price"placeholder="价格">
+                        <input type="text" class="form-control" id="goods_price" name="goods_price" placeholder="价格">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="goods_num" name="goods_num"placeholder="数量">
+                        <input type="text" class="form-control " id="goods_num" name="goods_num" placeholder="数量">
+                    </div>
+                    <div class="form-group">
+                        <div id="example-1" style="width: 100%;border-radius: 20px;"></div>
                     </div>
                     <div id="app">
                         <div class="hello">
                             <div class="upload">
                                 <div class="upload_warp">
                                     <div class="upload_warp_left" @click="fileClick">
-                                        <img src="./upload.png">
+                                        <img src="upload.png">
                                     </div>
                                     <div class="upload_warp_right" @drop="drop($event)" @dragenter="dragenter($event)" @dragover="dragover($event)">
                                         或者将文件拖到此处
@@ -208,24 +194,28 @@
                                 <div class="upload_warp_text">
                                     选中{{imgList.length}}张文件，共{{bytesToSize(this.size)}}
                                 </div>
-                                <input @change="fileChange($event)" type="file" id="upload_file"  name="upload_file" multiple style="display: none"/>
+                                <input @change="fileChange($event)" type="file" id="upload_file"  name="file" multiple style="display: none"/>
                                 <div class="upload_warp_img" v-show="imgList.length!=0">
                                     <div class="upload_warp_img_div" v-for="(item,index) of imgList">
                                         <div class="upload_warp_img_div_top">
                                             <div class="upload_warp_img_div_text">
                                                 {{item.file.name}}
                                             </div>
-                                            <img src="./del.png" class="upload_warp_img_div_del" @click="fileDel(index)">
+                                            <img src="del.png" class="upload_warp_img_div_del" @click="fileDel(index)">
                                         </div>
-                                        <img :src="item.file.src">
+                                        <img :src="item.file.src" >
+
+
                                     </div>
                                 </div>
-                            </div>
+<!--                                <div id="jdt" style="height: 20px;"></div>-->
+<!--                                <p>总大小<span id="total"></span>；已上传<span id="loaded"></span>；</p><br>-->
+
                         </div>
                     </div>
                     <br>
                         <div align="center" >
-                            <button type="submit" name="submit"  value="add" class="mybt" onclick="what">提交</button>
+                            <button  class="mybt" >提交</button>
                         </div>
                 </form>
             </div>
@@ -234,6 +224,7 @@
 </div>
 <script>
     //  import up from  './src/components/Hello'
+   var tupian= new Array();
     var app = new Vue({
         el: '#app',
         data () {
@@ -301,6 +292,8 @@
                     reader.readAsDataURL(file);
                     reader.onload = function () {
                         file.src = this.result;
+                        tupian.push(file.src);
+                        document.getElementById('test').value=file.src;
                         this.vue.imgList.push({
                             file
                         });
@@ -331,8 +324,47 @@
                 el.preventDefault();
                 this.fileList(el.dataTransfer);
             }
+
         }
-    })
+    }
+
+    )
+
+
 </script>
+<script>
+    $("#mybt").click(function(){
+        $.ajax({
+            url:'/upload_chuli.php',
+            type:'post',
+            data:{
+                "goods_name":$("#goods_name").val(),
+                "goods_detail":$("#goods_detail").val(),
+                "goods_from":$("#goods_from").val(),
+                "goods_class":$("#goods_class").val(),
+                "goods_price":$("#goods_price").val(),
+                "goods_num":$("#goods_num").val(),
+                // "goods_img":tupian
+            },
+//拼装json数组
+// data:$("#fm").serialize(),   //直接从form表单中取出数组
+            dataType:"JSON",
+// success:function(msg){
+//     if(msg) {
+//         $("p").append("账号为：" +  msg.username + "<br />" + "密码为：" + msg.password );
+//     }
+//     else {
+//         alert("输入异常!");
+//     }
+// },
+            error:function(){
+                console.log("ERROR");
+            }
+        });
+    });
+</script>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="javascripts/selectivity-jquery.js"></script>
+<script src="javascripts/main.js"></script>
 </body>
 </html>

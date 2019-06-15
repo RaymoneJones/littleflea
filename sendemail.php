@@ -1,6 +1,6 @@
 <?php
 require_once 'QQMailer.php';
-// 实例化QQMailer
+// 实例化QQMailer对象
 $mailer = new QQMailer(true);
 // 添加附件
 //$mailer->addFile('20130VL.jpg');
@@ -9,7 +9,7 @@ $title = '愿得一人心，白首不相离。';
 // 邮件内容
 $content = <<< EOF
                                     <p align="center">
-                                    皑如山上雪，皎若云间月。
+                                     皑如山上雪，皎若云间月。
                                     <br>闻君有两意，故来相决绝。
                                     <br>今日斗酒会，明旦沟水头。
                                     <br>躞蹀御沟上，沟水东西流。
@@ -19,44 +19,28 @@ $content = <<< EOF
                                     <br>男儿重意气，何用钱刀为！
                                     </p>
 EOF;
-
 // 发送QQ邮件
 $mailer->send('1240829086@qq.com', $title, $content);
 //echo  "chenggong";
 //引入PHPMailer的核心文件
-//
 //include("PHPMailer.php");
-//
 //include("SMTP.php");
-//
 //// 实例化PHPMailer核心类
-//
 //$mail = new \PHPMailer\PHPMailer\PHPMailer();
 //$mail->IsSMTP();
 //// $mail-> Host ="";
 //// $mail-> Port = 25;
 //// 是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
-//
 //$mail->SMTPDebug = 1;
-//
 //// 使用smtp鉴权方式发送邮件
-//
 //$mail->isSMTP();
-//
 //// smtp需要鉴权 这个必须是true
-//
 //$mail->SMTPAuth = true;
-//
 //// 链接qq域名邮箱的服务器地址
-//
 //$mail->Host = 'smtp.qq.com';
-//
 //// 设置使用ssl加密方式登录鉴权
-//
 //$mail->SMTPSecure = 'ssl';
-//
 //// 设置ssl连接smtp服务器的远程服务器端口号
-//
 //$mail->Port = 465;
 //
 //// 设置发送的邮件的编码

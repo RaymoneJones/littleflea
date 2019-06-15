@@ -56,7 +56,7 @@ if($password == $repassword){
 //            echo "'res_insert finish<br>";
             if ($res_insert) {
                 echo "<script>alert('注册已提交，请等待管理员审核！\\n审核结果将在第一时间通过您预留邮箱发送，请注意查收 。\\n现在您将转入平台试用界面.......'); </script>";
-                echo '<script>window.location="../index.html";</script>';
+                echo '<script>window.location="../index.php";</script>';
 //                echo "数据插入成功\n";
             } else {
                     printf("Error: %s\n", mysqli_error($conn));

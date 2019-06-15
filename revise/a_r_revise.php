@@ -17,7 +17,7 @@ if(isset($_GET["no"])) { //判断所需要的参数是否存在
 // 邮件内容
             $content = <<< EOF
                                     <h5>尊敬的$username</h5>
-                                    <p>&nbsp;&nbsp;恭喜您，注册成功！您可以使用设置的用户名/邮箱和密码登录<a href="http://134.175.95.174/littleflea/index.html">“小跳蚤”</a></p>
+                                    <p>&nbsp;&nbsp;恭喜您，注册成功！您可以使用设置的用户名/邮箱和密码登录<a href="http://134.175.95.174/littleflea/index.php">“小跳蚤”</a></p>
 EOF;
 
 // 发送QQ邮件
@@ -57,7 +57,7 @@ EOF;
 // 邮件内容
             $content = <<< EOF
                                     <h5>尊敬的$username</h5>
-                                    <p>&nbsp;&nbsp;恭喜，您上架的商品  $goods_name  审核通过！您可以使用设置的用户名/邮箱和密码登录<a href="http://134.175.95.174/littleflea/index.html">“小跳蚤”</a>查看详情</p>
+                                    <p>&nbsp;&nbsp;恭喜，您上架的商品  $goods_name  审核通过！您可以使用设置的用户名/邮箱和密码登录<a href="http://134.175.95.174/littleflea/index.php">“小跳蚤”</a>查看详情</p>
 EOF;
 
 // 发送QQ邮件
@@ -77,20 +77,3 @@ EOF;
         }
     }
 }
-
-
-//if(isset($_GET["id"])&&isset($_GET["assess"])){ //判断所需要的参数是否存在
-//    if($_GET["assess"]==1){
-//        $sql2="UPDATE tb_matter SET matter_assess='优秀' WHERE matter_id='".$_GET["id"]."'";
-//    }else if($_GET["assess"]==2){
-//        $sql2="UPDATE tb_matter SET matter_assess='良好' WHERE matter_id='".$_GET["id"]."'";
-//    }else if($_GET["assess"]==3){
-//        $sql2="UPDATE tb_matter SET matter_assess='一般' WHERE matter_id='".$_GET["id"]."'";
-//    }
-//    if($conn1-> uidRst($sql2) == 1){
-//        echo "<script>window.location.href='../matter.php?type=3';</script>";
-//    }else{
-//        echo "<script>alert('评价失败');window.location.href='../matter.php?type=3';</script>";
-//    }
-//}
-//

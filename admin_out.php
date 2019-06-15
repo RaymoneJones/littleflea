@@ -67,7 +67,7 @@
                         <div class="mega-menu">
                             <div class="mega-wrap">
                                 <div class="mega-column" style="margin-left: 45%">
-                                    <ul class="mega-item mega-features">
+                                    <ul class="mega-item mega-features" >
                                         <li><a href="check_user.php">校内用户列表</a></li>
                                         <li><a href="check_outor.php">校外用户列表</a></li>
                                         <li><a href="check_goods.php">上架商品列表</a></li>
@@ -80,7 +80,7 @@
                     <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">管理</a>
                         <div class="mega-menu">
                             <div class="mega-wrap">
-                                <div class="mega-column">
+                                <div class="mega-column" style="margin-left: 50%">
                                     <ul class="mega-item mega-features">
                                         <li><a href="admin_registration.php">校内注册审核</a></li>
                                         <li><a href="admin_out.php">校外注册审核</a></li>
@@ -166,7 +166,7 @@
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
 <script>
     $('#matter_table1').bootstrapTable({
-            url: 'data/a_r_data.php?table=goods1',
+            url: 'data/a_r_data.php?table=per3',
             method: "post",
             dataType: "json",
             height: 500,
@@ -184,31 +184,27 @@
             toolbal:'#toolbar',
             columns: [{
                 field: 'no',
-                title: '商品ID',
+                title: '注册ID',
                 align: 'center'
             }, {
-                field: 'goods_name',
-                title: '商品名',
+                field: 'username',
+                title: '用户名',
                 align: 'center'
             }, {
-                field: 'goods_from',
-                title: '品牌/产地',
+                field: 'email',
+                title: '邮箱',
                 align: 'center'
             }, {
-                field: 'goods_detail',
-                title: '商品详情',
+                field: 'phone',
+                title: '手机',
                 align: 'center'
             }, {
-                field: 'goods_price',
-                title: '价格',
+                field: 'idno',
+                title: '身份证号',
                 align: 'center'
             }, {
-                field: 'goods_num',
-                title: '数量',
-                align: 'center'
-            }, {
-                field: 'goods_img',
-                title: '商品图片',
+                field: 'realname2',
+                title: '姓名',
                 align: 'center'
             },{
                 field: 'matter_caozuo',
@@ -227,7 +223,7 @@
     );
 
     $('#matter_table2').bootstrapTable({
-            url: 'data/a_r_data.php?table=goods2',
+            url: 'data/a_r_data.php?table=per4',
             method: "post",
             dataType: "json",
             height: 500,
@@ -244,33 +240,29 @@
             toolbal:'#toolbar',
             columns: [{
                 field: 'no',
-                title: '商品ID',
+                title: '注册ID',
                 align: 'center'
             }, {
-                field: 'goods_name',
-                title: '商品名',
+                field: 'username',
+                title: '用户名',
                 align: 'center'
             }, {
-                field: 'goods_from',
-                title: '品牌/产地',
+                field: 'email',
+                title: '邮箱',
                 align: 'center'
             }, {
-                field: 'goods_detail',
-                title: '商品详情',
+                field: 'phone',
+                title: '手机',
                 align: 'center'
             }, {
-                field: 'goods_price',
-                title: '价格',
+                field: 'idno',
+                title: '身份证号',
                 align: 'center'
             }, {
-                field: 'goods_num',
-                title: '数量',
+                field: 'realname2',
+                title: '姓名',
                 align: 'center'
             }, {
-                field: 'goods_img',
-                title: '商品图片',
-                align: 'center'
-            },{
                 field: 'matter_caozuo',
                 title: '操作',
                 align: 'center',
@@ -289,12 +281,13 @@
 
     function aFormatter1(value, row, index) {
         return [
-            '<a class="btn btn-info btn-xs" href="revise/a_r_revise.php?no='+row.no+'&&userid='+row.userid+'&&goods_name='+row.goods_name+'&&caozuo2=1">通过</a>'
+            '<a class="btn btn-info btn-xs" href="revise/a_r_revise.php?no='+row.no+'&&username='+row.username+'&&email='+row.email+'&&caozuo4=1">通过</a>'
         ].join("")
     }
     function aFormatter2(value, row, index) {
         return [
-            '<a class="btn btn-info btn-xs" href="revise/a_r_revise.php?no='+row.no+'&&caozuo3=1">拒绝</a>'
+            '<a class="btn btn-info btn-xs" href="revise/a_r_revise.php?no='+row.no+'&&caozuo5=1">拒绝</a>'
+            // '&&username='+row.username+'&&email='+row.email+
         ].join("")
     }
 

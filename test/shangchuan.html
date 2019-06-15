@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Ding Jianlong Html</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/layer/2.3/skin/layer.css" rel="external nofollow" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/layer/2.3/layer.js"></script>
+</head>
+<body>
+<!-- 外层div 进度条的整体视觉和位置设置 -->
+<div style="width:300px;height: 20px;border: 1px solid #CCC;">
+    <!-- 内层div 逐渐递增的进度条 -->
+    <div id="jdt" style="height: 20px;"></div>
+</div>
+<p>总大小<span id="total"></span>；已上传<span id="loaded"></span>；</p><br>
+<form id="mainForm">
+    选择文件：<input type="file" name="file">
+    <input type="button" value="上传" onclick="upload()">
+</form>
+<script>
+    var uploading = false;
+    function upload(){
+        //首先封装一个方法 传入一个监听函数 返回一个绑定了监听函数的XMLHttpRequest对象
+        var xhrOnProgress=function(fun) {
+            xhrOnProgress.onprogress = fun; //绑定监听
+            //使用闭包实现监听绑
+            return function() {
+                //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
+                var xhr = $.ajaxSettings.xhr();
+                //判断监听函数是否为函数
+                if (typeof xhrOnProgress.onprogress !== 'function')
+                    return xhr;
+                //如果有监听函数并且xhr对象支持绑定时就把监听函数绑定上去
+                if (xhrOnProgress.onprogress && xhr.upload) {
+                    xhr.upload.onprogress = xhrOnProgress.onprogress;
+                }
+                return xhr;
+            }
+        }
+        var data = new FormData($('#mainForm')[0]); //要加【0】
+        console.log(data);
+        if(uploading){
+            layer.alert("文件正在上传中，请稍候");
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: 'chuli.php',  //当前路径
+            data: data,
+            dataType: 'json',
+            processData: false,  //序列化，no
+            contentType: false,  //不设置内容类型
+            beforeSend: function(){
+                uploading = true;
+            },
+            //进度条要调用原生xhr
+            xhr:xhrOnProgress(function(evt){
+                var percent = Math.floor(evt.loaded / evt.total*100);//计算百分比
+                console.log(percent);
+                // 设置进度条样式
+                $('#jdt').css('width',percent * 3 + 'px');
+                $('#jdt').css('background','skyblue');
+                //显示进度百分比
+                $('#jdt').text(percent+'%');
+                $('#loaded').text(evt.loaded/1024 + 'K');
+                $('#total').text(evt.total/1024 + 'K');
+            }),
+            success: function (data) {
+                if (data.code == 200) {
+                    layer.msg(data.message, {icon: 1, time: 1000});
+                    //成功后关闭修改页
+                    setTimeout(function(){
+                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe的索引
+                        parent.layer.close(index);  //在执行关闭
+                    } ,2000);
+                    //还有刷新下iframe的界面
+                    parent.location.reload();
+                } else {
+                    layer.msg(data.message, {icon: 2, time: 3000});
+                }
+                uploading = false;
+            },
+            // error: function (data) {
+            //     alert('服务异常，请稍后重试');
+            //     console.log(data);
+            // }
+        });
+    }
+</script>
+</body>
+</html>
