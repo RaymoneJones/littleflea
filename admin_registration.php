@@ -46,7 +46,7 @@
                     <p>顶部信息栏</p>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="header__actions"><a href="index.html">退出</a>
+                    <div class="header__actions"><a href="index.php">退出</a>
                     </div>
                 </div>
             </div>
@@ -62,14 +62,15 @@
             <!--		菜单导航栏-->
             <div class="navigation__column center">
                 <ul class="main-menu menu">
-                    <li class="menu-item"><a href="index.html">首页</a></li>
+                    <li class="menu-item"><a href="index.php">首页</a></li>
                     <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">查看</a>
                         <div class="mega-menu">
                             <div class="mega-wrap">
                                 <div class="mega-column" style="margin-left: 45%">
                                     <ul class="mega-item mega-features" >
-                                        <li><a href="user_list.html">用户列表</a></li>
-                                        <li><a href="goods_list.html">商品列表</a></li>
+                                        <li><a href="check_user.php">校内用户列表</a></li>
+                                        <li><a href="check_outor.php">校外用户列表</a></li>
+                                        <li><a href="check_goods.php">上架商品列表</a></li>
                                         <li><a href="#">else</a></li>
                                     </ul>
                                 </div>
