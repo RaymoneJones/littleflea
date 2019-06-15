@@ -1,3 +1,9 @@
+<!--已修改详情 未修改 购物车-->
+<?php
+$conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+$sql="select * from tb_goods where goods_status='1'";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <!--[if IE 7]><html class="ie ie7"><![endif]-->
 <!--[if IE 8]><html class="ie ie8"><![endif]-->
@@ -44,7 +50,7 @@
                     <p>顶部信息栏</p>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="header__actions"><a href="index.php">退出</a>
+                    <div class="header__actions"><a href="login.html">退出</a>
                         <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">收藏夹<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"> 收藏1</a></li>
@@ -60,7 +66,6 @@
                                 <li><a href="#">我发布的</a></li>
                                 <li><a href="#">我卖出的</a></li>
                                 <li><a href="#">我买到的</a></li>
-                                <li><a href="goods_upload.php">发布新的</a></li>
                             </ul>
                         </div>
                     </div>
@@ -223,207 +228,84 @@
                 <div class="masonry-wrapper" data-col-md="4" data-col-sm="2" data-col-xs="1" data-gap="30" data-radio="100%">
                     <div class="ps-masonry">
                         <div class="grid-sizer"></div>
-                        <div class="grid-item kids">
-                            <div class="grid-item__content-wrapper">
-                                <div class="ps-shoe mb-30">
-                                    <div class="ps-shoe__thumbnail">
-                                        <div class="ps-badge"><span>New</span></div>
-                                        <!--					  默认显示-->
-                                        <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
-                                    </div>
-                                    <div class="ps-shoe__content">
-                                        <div class="ps-shoe__variants">
-                                            <!--						预览图-->
-                                            <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                                            <select class="ps-rating ps-shoe__rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">学习资料测试</a>
-                                            <p class="ps-shoe__categories"><a href="#">类</a>,<a href="#"> 品牌</a>,<a href="#"> 品牌</a></p><span class="ps-shoe__price"> ￥ 120</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item nike">
-                            <div class="grid-item__content-wrapper">
-                                <div class="ps-shoe mb-30">
-                                    <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/2.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
-                                    </div>
-                                    <div class="ps-shoe__content">
-                                        <div class="ps-shoe__variants">
-                                            <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                                            <select class="ps-rating ps-shoe__rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">手机数码</a>
-                                            <p class="ps-shoe__categories"><a href="#">类</a>,<a href="#"> 品牌</a>,<a href="#"> 品牌</a></p><span class="ps-shoe__price"> ￥ 120</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item adidas">
-                            <div class="grid-item__content-wrapper">
-                                <div class="ps-shoe mb-30">
-                                    <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/3.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
-                                    </div>
-                                    <div class="ps-shoe__content">
-                                        <div class="ps-shoe__variants">
-                                            <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                                            <select class="ps-rating ps-shoe__rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">服饰美妆</a>
-                                            <p class="ps-shoe__categories"><a href="#">测试</a>,<a href="#"> 测试</a>,<a href="#"> 测试</a></p><span class="ps-shoe__price"> ￥ 120</span>
+
+                        <?php
+                        if ($result->num_rows > 0) {
+                            $a=array();
+                            $i=0;
+                            while ($row = $result->fetch_assoc()) {
+
+                                //                                array_push($a,$row['no']);
+                                echo '<form onclick="getname(this.id)" id="'.$row['no'].'" >'
+                                ?>
+
+                                <div class="grid-item nike" >
+                                    <div class="grid-item__content-wrapper">
+                                        <div class="ps-shoe mb-30">
+                                            <div class="ps-shoe__thumbnail">
+                                                <a class="ps-shoe__favorite" href="#"><i
+                                                            class="ps-icon-heart"></i></a><img  src="images/shoe/2.jpg"
+                                                                                                alt=""><a
+                                                        class="ps-shoe__overlay" ></a>
+                                                <!--                                                    <a  href="product-detail.html"></a>-->
+                                                <!--                                                   -->
+                                            </div>
+                                            <div class="ps-shoe__content">
+                                                <div class="ps-shoe__variants">
+                                                    <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg"
+                                                                                              alt=""><img
+                                                                src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg"
+                                                                                                    alt=""><img
+                                                                src="images/shoe/5.jpg" alt=""></div>
+                                                    <select class="ps-rating ps-shoe__rating">
+                                                        <option value="1">1</option>
+                                                        <option value="1">2</option>
+                                                        <option value="1">3</option>
+                                                        <option value="1">4</option>
+                                                        <option value="2">5</option>
+                                                    </select>
+                                                </div>
+                                                <div class="ps-shoe__detail">
+                                                    <a class="ps-shoe__name">
+                                                        <p id="namename" >
+                                                            <?php
+                                                            echo $row['goods_name'];
+                                                            ?>
+                                                        </p></a>
+                                                    <p class="ps-shoe__categories"><a ><?php
+                                                            echo $row['goods_class'];
+                                                            ?></a>,<a ><?php
+                                                            echo $row['goods_from'];
+                                                            ?></a></p><span
+                                                            class="ps-shoe__price"> ￥ <?php
+                                                        echo $row['goods_price'];
+                                                        ?></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="grid-item kids">
-                            <div class="grid-item__content-wrapper">
-                                <div class="ps-shoe mb-30">
-                                    <div class="ps-shoe__thumbnail">
-                                        <div class="ps-badge ps-badge--sale"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/4.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
-                                    </div>
-                                    <div class="ps-shoe__content">
-                                        <div class="ps-shoe__variants">
-                                            <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                                            <select class="ps-rating ps-shoe__rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">学习资料测试</a>
-                                            <p class="ps-shoe__categories"><a href="#">类</a>,<a href="#"> 品牌</a>,<a href="#"> 品牌</a></p><span class="ps-shoe__price"> ￥ 120</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item men">
-                            <div class="grid-item__content-wrapper">
-                                <div class="ps-shoe mb-30">
-                                    <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/5.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
-                                    </div>
-                                    <div class="ps-shoe__content">
-                                        <div class="ps-shoe__variants">
-                                            <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                                            <select class="ps-rating ps-shoe__rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">户外运动</a>
-                                            <p class="ps-shoe__categories"><a href="#">类</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> ￥ 120</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item women">
-                            <div class="grid-item__content-wrapper">
-                                <div class="ps-shoe mb-30">
-                                    <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/6.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
-                                    </div>
-                                    <div class="ps-shoe__content">
-                                        <div class="ps-shoe__variants">
-                                            <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                                            <select class="ps-rating ps-shoe__rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">生活百货</a>
-                                            <p class="ps-shoe__categories"><a href="#">测试</a>,<a href="#"> 测试</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> ￥ 120</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item kids">
-                            <div class="grid-item__content-wrapper">
-                                <div class="ps-shoe mb-30">
-                                    <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/7.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
-                                    </div>
-                                    <div class="ps-shoe__content">
-                                        <div class="ps-shoe__variants">
-                                            <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                                            <select class="ps-rating ps-shoe__rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">学习资料测试</a>
-                                            <p class="ps-shoe__categories"><a href="#">类</a>,<a href="#"> 品牌</a>,<a href="#"> 品牌</a></p><span class="ps-shoe__price"> ￥ 120</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item kids">
-                            <div class="grid-item__content-wrapper">
-                                <div class="ps-shoe mb-30">
-                                    <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/8.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
-                                    </div>
-                                    <div class="ps-shoe__content">
-                                        <div class="ps-shoe__variants">
-                                            <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
-                                            <select class="ps-rating ps-shoe__rating">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">学习资料测试</a>
-                                            <p class="ps-shoe__categories"><a href="#">类</a>,<a href="#"> 品牌</a>,<a href="#"> 品牌</a></p><span class="ps-shoe__price"> ￥ 120</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                </form>
+
+                                <?php
+                                $i++;
+                            }
+                        }
+                        ?>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<!--    <input type="text" id="text" style="width: 500px">-->
     <div class="ps-footer bg--cover" data-background="images/background/parallax.jpg">
         <div class="ps-footer__copyright">
             <div class="ps-container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                         <!--				  这里的网站还要改啊-->
-                        <p>Copyright &copy; 2019.Raymone Jones All rights reserved.<a href="http://134.175.95.174/littleflea/html/index.html" target="_blank" title="小跳蚤">小跳蚤</a> </p>
+                        <p>Copyright &copy; 2019.Raymone Jones All rights reserved.<a href="http://134.175.95.174/littleflea/index.php" target="_blank" title="小跳蚤">小跳蚤</a> </p>
                     </div>
                 </div>
             </div>
@@ -457,5 +339,29 @@
 <script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
 <!-- Custom scripts-->
 <script type="text/javascript" src="js/main.js"></script>
+
+<script>
+
+    function getname(id){
+        // document.getElementById('text').value=id;
+        var goodsname=id;
+
+        window.location.href='product-detail.php?no='+goodsname+'';
+
+        //     $.ajax({
+        //         type:"POST",
+        //         url:"data.php",
+        //
+        //         data:{
+        //             no:goodsname;
+        // }
+        // })
+    }
+
+    // $(".myform").click(function(){
+    //     var goodsname=this.id;
+    //
+    // });
+</script>
 </body>
 </html>

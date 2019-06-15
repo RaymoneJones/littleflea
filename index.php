@@ -298,14 +298,14 @@ $result = $conn->query($sql);
 			</div>
 		</div>
 	</div>
-	<input type="text" id="text" style="width: 500px">
+<!--	<input type="text" id="text" style="width: 500px">-->
 	<div class="ps-footer bg--cover" data-background="images/background/parallax.jpg">
 		<div class="ps-footer__copyright">
 			<div class="ps-container">
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
 						<!--				  这里的网站还要改啊-->
-						<p>Copyright &copy; 2019.Raymone Jones All rights reserved.<a href="http://134.175.95.174/littleflea/html/index.html" target="_blank" title="小跳蚤">小跳蚤</a> </p>
+						<p>Copyright &copy; 2019.Raymone Jones All rights reserved.<a href="http://134.175.95.174/littleflea/index.php" target="_blank" title="小跳蚤">小跳蚤</a> </p>
 					</div>
 				</div>
 			</div>
