@@ -49,7 +49,7 @@
 					<p>顶部信息栏</p>
 				</div>
 				<div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-					<div class="header__actions"><a href="index.html">退出</a>
+					<div class="header__actions"><a href="index.php">退出</a>
 						<div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">收藏夹<i class="fa fa-angle-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"> 收藏1</a></li>
@@ -82,7 +82,7 @@
 			<!--		菜单导航栏-->
 			<div class="navigation__column center">
 				<ul class="main-menu menu">
-					<li class="menu-item menu-item-has-children dropdown"><a href="index.html">首页</a>
+					<li class="menu-item menu-item-has-children dropdown"><a href="index.php">首页</a>
 						<!--					<ul class="sub-menu">-->
 						<!--					  <li class="menu-item"><a href="index.html">Homepage #1</a></li>-->
 						<!--					  <li class="menu-item"><a href="#">Homepage #2</a></li>-->
@@ -185,22 +185,22 @@
 						<div class="ps-cart__content">
 							<!--				购物车项目1-->
 							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="picture/充电器.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">vivo充电器</a>
+								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/充电器.jpg" alt=""></div>
+								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">vivo充电器</a>
 									<p><span>数量:<i>1</i></span><span>总价:<i>￥25</i></span></p>
 								</div>
 							</div>
 							<!--				购物车项目2-->
 							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="picture/鞋.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">李宁跑鞋</a>
+								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/鞋.jpg" alt=""></div>
+								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">李宁跑鞋</a>
 									<p><span>数量:<i>1</i></span><span>总价:<i>￥70</i></span></p>
 								</div>
 							</div>
 							<!--				购物车项目3-->
 							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="picture/吉他.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">Taylor吉他</a>
+								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/吉他.jpg" alt=""></div>
+								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">Taylor吉他</a>
 									<p><span>数量:<i>1</i></span><span>总价:<i>￥800</i></span></p>
 								</div>
 							</div>
@@ -268,42 +268,52 @@
 			  </select>
 <!--				<a href="#">(Read all 8 reviews)</a>-->
 			</div>
-			<h1>Taylor吉他214CE Taylor单板吉他</h1>
-			<p class="ps-product__category"><a href="#"> 吉他</a>,<a href="#"> Taylor</a>,<a href="#"> 云杉木</a></p>
-			<h3 class="ps-product__price">￥800 <del>￥1200</del></h3>
+              <?php
+//              <del>￥'.$row["goods_price"].'</del>
+                    $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+                    $sql="select * from tb_goods where no = ".$_GET['no']." ";
+                    $result=$conn->query($sql);
+                    $row = $result->fetch_assoc();
+              echo '<h1>'.$row["goods_name"].'</h1>
+              
+
+			<p class="ps-product__category"><a href="#">品牌/产地： '.$row["goods_from"].'</a><a href="#"> 类别：'.$row["goods_class"].'</a>,<a href="#">标签： '.$row["goods_tag"].'</a></p>
+			<h3 class="ps-product__price">￥'.$row["goods_price"].'</h3>
+			
 			<div class="ps-product__block ps-product__quickview">
 			  <h4>简述</h4>
-			  <p>国际大牌Taylor云杉木单板吉他，进价出。夏威夷Koa背侧。Es2拾音器。</p>
+			  <p>'.$row["goods_detail"].'</p>
 			</div>
-			<div class="ps-product__block ps-product__style">
-			  <h4>选择款式</h4>
-			  <ul>
-				<li><a href="product-detail.html"><img src="picture/1.jpg" alt=""></a></li>
-				<li><a href="product-detail.html"><img src="picture/2.jpg" alt=""></a></li>
-				<li><a href="product-detail.html"><img src="picture/3.jpg" alt=""></a></li>
-				<li><a href="product-detail.html"><img src="picture/2.jpg" alt=""></a></li>
-			  </ul>
-			</div>
-			<div class="ps-product__block ps-product__size">
-			  <h4>尺码<a href="#">尺码表</a></h4>
-			  <select class="ps-select selectpicker">
-				<option value="1">选择尺寸</option>
-				<option value="2">4</option>
-				<option value="3">4.5</option>
-				<option value="3">5</option>
-				<option value="3">6</option>
-				<option value="3">6.5</option>
-				<option value="3">7</option>
-				<option value="3">7.5</option>
-				<option value="3">8</option>
-				<option value="3">8.5</option>
-				<option value="3">9</option>
-				<option value="3">9.5</option>
-				<option value="3">10</option>
-			  </select>
-			  <div class="form-group">
-				<input class="form-control" type="number" value="1">
-			  </div>
+			<div class="ps-product__block ps-product__style">';
+			?>
+<!--			  <h4>选择款式</h4>-->
+<!--			  <ul>-->
+<!--				<li><a href="product-detail.php"><img src="picture/1.jpg" alt=""></a></li>-->
+<!--				<li><a href="product-detail.php"><img src="picture/2.jpg" alt=""></a></li>-->
+<!--				<li><a href="product-detail.php"><img src="picture/3.jpg" alt=""></a></li>-->
+<!--				<li><a href="product-detail.php"><img src="picture/2.jpg" alt=""></a></li>-->
+<!--			  </ul>-->
+<!--			</div>-->
+<!--			<div class="ps-product__block ps-product__size">-->
+<!--			  <h4>尺码<a href="#">尺码表</a></h4>-->
+<!--			  <select class="ps-select selectpicker">-->
+<!--				<option value="1">选择尺寸</option>-->
+<!--				<option value="2">4</option>-->
+<!--				<option value="3">4.5</option>-->
+<!--				<option value="3">5</option>-->
+<!--				<option value="3">6</option>-->
+<!--				<option value="3">6.5</option>-->
+<!--				<option value="3">7</option>-->
+<!--				<option value="3">7.5</option>-->
+<!--				<option value="3">8</option>-->
+<!--				<option value="3">8.5</option>-->
+<!--				<option value="3">9</option>-->
+<!--				<option value="3">9.5</option>-->
+<!--				<option value="3">10</option>-->
+<!--			  </select>-->
+<!--			  <div class="form-group">-->
+<!--				<input class="form-control" type="number" value="1">-->
+<!--			  </div>-->
 			</div>
 			<div class="ps-product__shopping"><a class="ps-btn mb-10" href="shopping-cart.html">加入购物车<i class="ps-icon-next"></i></a>
 			  <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
@@ -418,7 +428,7 @@
 						<div class="ps-shoe__thumbnail">
 							<div class="ps-badge"><span>New</span></div>
 							<!--					  默认显示-->
-							<div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+							<div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
 						</div>
 						<div class="ps-shoe__content">
 							<div class="ps-shoe__variants">
@@ -442,7 +452,7 @@
 			<div class="grid-item nike">
 				<div class="grid-item__content-wrapper">
 					<div class="ps-shoe mb-30">
-						<div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/2.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+						<div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/2.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
 						</div>
 						<div class="ps-shoe__content">
 							<div class="ps-shoe__variants">
@@ -465,7 +475,7 @@
 			<div class="grid-item adidas">
 				<div class="grid-item__content-wrapper">
 					<div class="ps-shoe mb-30">
-						<div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/3.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+						<div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/3.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
 						</div>
 						<div class="ps-shoe__content">
 							<div class="ps-shoe__variants">
@@ -489,7 +499,7 @@
 				<div class="grid-item__content-wrapper">
 					<div class="ps-shoe mb-30">
 						<div class="ps-shoe__thumbnail">
-							<div class="ps-badge ps-badge--sale"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/4.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+							<div class="ps-badge ps-badge--sale"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/4.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
 						</div>
 						<div class="ps-shoe__content">
 							<div class="ps-shoe__variants">
@@ -512,7 +522,7 @@
 			<div class="grid-item men">
 				<div class="grid-item__content-wrapper">
 					<div class="ps-shoe mb-30">
-						<div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/5.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+						<div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/5.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
 						</div>
 						<div class="ps-shoe__content">
 							<div class="ps-shoe__variants">
@@ -535,7 +545,7 @@
 			<div class="grid-item women">
 				<div class="grid-item__content-wrapper">
 					<div class="ps-shoe mb-30">
-						<div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/6.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+						<div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/6.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>
 						</div>
 						<div class="ps-shoe__content">
 							<div class="ps-shoe__variants">
@@ -559,7 +569,7 @@
 <!--		  <div class="ps-shoes&#45;&#45;carousel">-->
 <!--			<div class="ps-shoe">-->
 <!--			  <div class="ps-shoe__thumbnail">-->
-<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>-->
+<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
 <!--			  </div>-->
 <!--			  <div class="ps-shoe__content">-->
 <!--				<div class="ps-shoe__variants">-->
@@ -582,7 +592,7 @@
 <!--			<div class="ps-shoe">-->
 <!--			  <div class="ps-shoe__thumbnail">-->
 <!--				<div class="ps-badge"><span>New</span></div>-->
-<!--				<div class="ps-badge ps-badge&#45;&#45;sale ps-badge&#45;&#45;2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/2.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>-->
+<!--				<div class="ps-badge ps-badge&#45;&#45;sale ps-badge&#45;&#45;2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/2.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
 <!--			  </div>-->
 <!--			  <div class="ps-shoe__content">-->
 <!--				<div class="ps-shoe__variants">-->
@@ -605,7 +615,7 @@
 <!--		  <div class="ps-shoes&#45;&#45;carousel">-->
 <!--			<div class="ps-shoe">-->
 <!--			  <div class="ps-shoe__thumbnail">-->
-<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/3.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>-->
+<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/3.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
 <!--			  </div>-->
 <!--			  <div class="ps-shoe__content">-->
 <!--				<div class="ps-shoe__variants">-->
@@ -626,7 +636,7 @@
 <!--		  </div>-->
 <!--		  <div class="ps-shoes&#45;&#45;carousel">-->
 <!--			<div class="ps-shoe">-->
-<!--			  <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/4.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>-->
+<!--			  <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/4.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
 <!--			  </div>-->
 <!--			  <div class="ps-shoe__content">-->
 <!--				<div class="ps-shoe__variants">-->
@@ -648,7 +658,7 @@
 <!--		  <div class="ps-shoes&#45;&#45;carousel">-->
 <!--			<div class="ps-shoe">-->
 <!--			  <div class="ps-shoe__thumbnail">-->
-<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/5.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>-->
+<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/5.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
 <!--			  </div>-->
 <!--			  <div class="ps-shoe__content">-->
 <!--				<div class="ps-shoe__variants">-->
@@ -669,7 +679,7 @@
 <!--		  </div>-->
 <!--		  <div class="ps-shoes&#45;&#45;carousel">-->
 <!--			<div class="ps-shoe">-->
-<!--			  <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/6.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>-->
+<!--			  <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/6.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
 <!--			  </div>-->
 <!--			  <div class="ps-shoe__content">-->
 <!--				<div class="ps-shoe__variants">-->
