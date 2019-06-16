@@ -1,8 +1,10 @@
+<!-- 除上传图片外均已完善-->
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>注册——“小跳蚤”二手交易平台</title>
+    <title>商品上架——“小跳蚤”二手交易平台</title>
     <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
@@ -156,7 +158,7 @@
     <div class="container" style="opacity: 0%">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                <form id="formform" class="form-horizontal" >
+                <form id="formform" class="form-horizontal"  method="post" action="upload_chuli.php">
 <!--                    method="post" action="upload_chuli.php"-->
                     <span class="heading">商品上架</span>
                     <div class="form-group">
@@ -169,7 +171,7 @@
                         <input type="text" class="form-control" id="goods_from" name="goods_from" placeholder="品牌/产地">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="goods_class" name="goods_class" placeholder="分类标签">
+                        <input type="text" class="form-control" id="goods_tag" name="goods_tag" placeholder="分类标签">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="goods_price" name="goods_price" placeholder="价格">
@@ -179,6 +181,7 @@
                     </div>
                     <div class="form-group">
                         <div id="example-1" style="width: 100%;border-radius: 20px;"></div>
+                        <input type="text"   id="goods_class"  name="goods_class" style="visibility: hidden">
                     </div>
                     <div id="app">
                         <div class="hello">
@@ -208,14 +211,12 @@
 
                                     </div>
                                 </div>
-<!--                                <div id="jdt" style="height: 20px;"></div>-->
-<!--                                <p>总大小<span id="total"></span>；已上传<span id="loaded"></span>；</p><br>-->
-
                         </div>
+                    </div>
                     </div>
                     <br>
                         <div align="center" >
-                            <button  class="mybt" >提交</button>
+                            <button  type="submit" class="mybt">提交</button>
                         </div>
                 </form>
             </div>
@@ -293,7 +294,7 @@
                     reader.onload = function () {
                         file.src = this.result;
                         tupian.push(file.src);
-                        document.getElementById('test').value=file.src;
+                        // document.getElementById('test').value=file.src;
                         this.vue.imgList.push({
                             file
                         });
@@ -331,38 +332,19 @@
     )
 
 
+
 </script>
 <script>
-    $("#mybt").click(function(){
-        $.ajax({
-            url:'/upload_chuli.php',
-            type:'post',
-            data:{
-                "goods_name":$("#goods_name").val(),
-                "goods_detail":$("#goods_detail").val(),
-                "goods_from":$("#goods_from").val(),
-                "goods_class":$("#goods_class").val(),
-                "goods_price":$("#goods_price").val(),
-                "goods_num":$("#goods_num").val(),
-                // "goods_img":tupian
-            },
-//拼装json数组
-// data:$("#fm").serialize(),   //直接从form表单中取出数组
-            dataType:"JSON",
-// success:function(msg){
-//     if(msg) {
-//         $("p").append("账号为：" +  msg.username + "<br />" + "密码为：" + msg.password );
-//     }
-//     else {
-//         alert("输入异常!");
-//     }
-// },
-            error:function(){
-                console.log("ERROR");
-            }
-        });
+    $("#example-1").on("change", function(e){
+        var val = $('#example-1').selectivity('value');
+        document.getElementById("goods_class").value=val;
+
+        // document.write(val);
     });
-</script>
+
+
+    </script>
+
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script src="javascripts/selectivity-jquery.js"></script>
 <script src="javascripts/main.js"></script>

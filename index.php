@@ -1,4 +1,6 @@
 ﻿<!--已修改详情 未修改 购物车-->
+<!--6.16 0：01 修改未登录购物车-->
+<!--0：13 完善点击购物车跳登录-->
 <?php
 $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
 $sql="select * from tb_goods where goods_status='1'";
@@ -142,42 +144,16 @@ $result = $conn->query($sql);
 					<input class="form-control" type="text" placeholder="宝贝只需搜一下！">
 					<button><i class="ps-icon-search"></i></button>
 				</form>
-				<div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>3</i></span><i class="ps-icon-shopping-cart"></i></a>
+				<div class="ps-cart"><a class="ps-cart__toggle" href="#"><i class="ps-icon-shopping-cart"></i></a>
 					<div class="ps-cart__listing">
-						<div class="ps-cart__content">
-							<!--				购物车项目1-->
-							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/充电器.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">vivo充电器</a>
-									<p><span>数量:<i>1</i></span><span>总价:<i>￥25</i></span></p>
-								</div>
-							</div>
-							<!--				购物车项目2-->
-							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/鞋.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">李宁跑鞋</a>
-									<p><span>数量:<i>1</i></span><span>总价:<i>￥70</i></span></p>
-								</div>
-							</div>
-							<!--				购物车项目3-->
-							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/吉他.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">Taylor吉他</a>
-									<p><span>数量:<i>1</i></span><span>总价:<i>￥800</i></span></p>
-								</div>
-							</div>
-						</div>
-						<!--			  总价-->
-						<div class="ps-cart__total">
-							<p>件数:<span>3</span></p>
-							<p>合计:<span>￥895.00</span></p>
-						</div>
-						<div class="ps-cart__footer"><a class="ps-btn" href="shopping-cart.html">去结算<i class="ps-icon-arrow-left"></i></a></div>
+						<div class="ps-cart__content" style="text-align: center">
+                            <a href="login.html">登录“小跳蚤”，查看更多信息！</a>
 					</div>
 				</div>
 				<div class="menu-toggle"><span></span></div>
 			</div>
 		</div>
+        </div>
 	</nav>
 </header>
 

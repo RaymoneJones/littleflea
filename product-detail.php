@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+?>
+<!DOCTYPE html>
 <!--[if IE 7]><html class="ie ie7"><![endif]-->
 <!--[if IE 8]><html class="ie ie8"><![endif]-->
 <!--[if IE 9]><html class="ie ie9"><![endif]-->
@@ -76,7 +79,7 @@
 		<div class="container-fluid">
 			<div class="navigation__column left">
 				<!--		  logo-->
-				<div class="header__logo"><a class="ps-logo" href="home.html"><img src="picture/logo2.png" alt=""></a></div>
+				<div class="header__logo"><a class="ps-logo" href="home.php"><img src="picture/logo2.png" alt=""></a></div>
 				<!--		  picture/logo.png-->
 			</div>
 			<!--		菜单导航栏-->
@@ -210,7 +213,7 @@
 							<p>件数:<span>3</span></p>
 							<p>合计:<span>￥895.00</span></p>
 						</div>
-						<div class="ps-cart__footer"><a class="ps-btn" href="shopping-cart.html">去结算<i class="ps-icon-arrow-left"></i></a></div>
+						<div class="ps-cart__footer"><a class="ps-btn" href="shopping-cart.php">去结算<i class="ps-icon-arrow-left"></i></a></div>
 					</div>
 				</div>
 				<div class="menu-toggle"><span></span></div>
@@ -275,7 +278,7 @@
                     $result=$conn->query($sql);
                     $row = $result->fetch_assoc();
               echo '<h1>'.$row["goods_name"].'</h1>
-              
+                           <input type="text" style="visibility: hidden" name="goods_no" id="'.$row['no'].'" >
 
 			<p class="ps-product__category"><a href="#">品牌/产地： '.$row["goods_from"].'</a><a href="#"> 类别：'.$row["goods_class"].'</a>,<a href="#">标签： '.$row["goods_tag"].'</a></p>
 			<h3 class="ps-product__price">￥'.$row["goods_price"].'</h3>
@@ -286,36 +289,11 @@
 			</div>
 			<div class="ps-product__block ps-product__style">';
 			?>
-<!--			  <h4>选择款式</h4>-->
-<!--			  <ul>-->
-<!--				<li><a href="product-detail.php"><img src="picture/1.jpg" alt=""></a></li>-->
-<!--				<li><a href="product-detail.php"><img src="picture/2.jpg" alt=""></a></li>-->
-<!--				<li><a href="product-detail.php"><img src="picture/3.jpg" alt=""></a></li>-->
-<!--				<li><a href="product-detail.php"><img src="picture/2.jpg" alt=""></a></li>-->
-<!--			  </ul>-->
-<!--			</div>-->
-<!--			<div class="ps-product__block ps-product__size">-->
-<!--			  <h4>尺码<a href="#">尺码表</a></h4>-->
-<!--			  <select class="ps-select selectpicker">-->
-<!--				<option value="1">选择尺寸</option>-->
-<!--				<option value="2">4</option>-->
-<!--				<option value="3">4.5</option>-->
-<!--				<option value="3">5</option>-->
-<!--				<option value="3">6</option>-->
-<!--				<option value="3">6.5</option>-->
-<!--				<option value="3">7</option>-->
-<!--				<option value="3">7.5</option>-->
-<!--				<option value="3">8</option>-->
-<!--				<option value="3">8.5</option>-->
-<!--				<option value="3">9</option>-->
-<!--				<option value="3">9.5</option>-->
-<!--				<option value="3">10</option>-->
-<!--			  </select>-->
-<!--			  <div class="form-group">-->
-<!--				<input class="form-control" type="number" value="1">-->
-<!--			  </div>-->
 			</div>
-			<div class="ps-product__shopping"><a class="ps-btn mb-10" href="shopping-cart.html">加入购物车<i class="ps-icon-next"></i></a>
+			<div class="ps-product__shopping">
+                <?php
+                echo'<a class="ps-btn mb-10" id="add" href="addcart.php?no='.$row['no'].'">加入购物车<i class="ps-icon-next"></i></a>'
+                ?>
 			  <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
 			</div>
 		  </div>
@@ -330,11 +308,15 @@
 		  </div>
 		  <div class="tab-content mb-60">
 			<div class="tab-pane active" role="tabpanel" id="tab_01">
-			  <p>国际大牌Taylor云杉木单板吉他，进价出。夏威夷Koa背侧。Es2拾音器。</p>
+                <p><?php
+                    echo $row['goods_detail'];
+                    ?></p>
 			  <p>喜欢的可议价，接小刀，拒绝屠龙刀。</p>
 			</div>
 			<div class="tab-pane" role="tabpanel" id="tab_02">
-			  <p class="mb-20">0条关于 <strong>TAYLOR吉他214CE TAYLOR单板吉他</strong>的评价</p>
+                <p class="mb-20">0条关于 <strong><?php
+                        echo $row['goods_name'];
+                        ?></strong>的评价</p>
 <!--			  <div class="ps-review">-->
 <!--				<div class="ps-review__thumbnail"><img src="images/user/1.jpg" alt=""></div>-->
 <!--				<div class="ps-review__content">-->
@@ -565,145 +547,30 @@
 					</div>
 				</div>
 			</div>
-
-<!--		  <div class="ps-shoes&#45;&#45;carousel">-->
-<!--			<div class="ps-shoe">-->
-<!--			  <div class="ps-shoe__thumbnail">-->
-<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
-<!--			  </div>-->
-<!--			  <div class="ps-shoe__content">-->
-<!--				<div class="ps-shoe__variants">-->
-<!--				  <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>-->
-<!--				  <select class="ps-rating ps-shoe__rating">-->
-<!--					<option value="1">1</option>-->
-<!--					<option value="1">2</option>-->
-<!--					<option value="1">3</option>-->
-<!--					<option value="1">4</option>-->
-<!--					<option value="2">5</option>-->
-<!--				  </select>-->
-<!--				</div>-->
-<!--				<div class="ps-shoe__detail"><a class="ps-shoe__name" href="product-detai.html">Air Jordan 7 Retro</a>-->
-<!--				  <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>-->
-<!--				</div>-->
-<!--			  </div>-->
-<!--			</div>-->
-<!--		  </div>-->
-<!--		  <div class="ps-shoes&#45;&#45;carousel">-->
-<!--			<div class="ps-shoe">-->
-<!--			  <div class="ps-shoe__thumbnail">-->
-<!--				<div class="ps-badge"><span>New</span></div>-->
-<!--				<div class="ps-badge ps-badge&#45;&#45;sale ps-badge&#45;&#45;2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/2.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
-<!--			  </div>-->
-<!--			  <div class="ps-shoe__content">-->
-<!--				<div class="ps-shoe__variants">-->
-<!--				  <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>-->
-<!--				  <select class="ps-rating ps-shoe__rating">-->
-<!--					<option value="1">1</option>-->
-<!--					<option value="1">2</option>-->
-<!--					<option value="1">3</option>-->
-<!--					<option value="1">4</option>-->
-<!--					<option value="2">5</option>-->
-<!--				  </select>-->
-<!--				</div>-->
-<!--				<div class="ps-shoe__detail"><a class="ps-shoe__name" href="product-detai.html">Air Jordan 7 Retro</a>-->
-<!--				  <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price">-->
-<!--					<del>£220</del> £ 120</span>-->
-<!--				</div>-->
-<!--			  </div>-->
-<!--			</div>-->
-<!--		  </div>-->
-<!--		  <div class="ps-shoes&#45;&#45;carousel">-->
-<!--			<div class="ps-shoe">-->
-<!--			  <div class="ps-shoe__thumbnail">-->
-<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/3.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
-<!--			  </div>-->
-<!--			  <div class="ps-shoe__content">-->
-<!--				<div class="ps-shoe__variants">-->
-<!--				  <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>-->
-<!--				  <select class="ps-rating ps-shoe__rating">-->
-<!--					<option value="1">1</option>-->
-<!--					<option value="1">2</option>-->
-<!--					<option value="1">3</option>-->
-<!--					<option value="1">4</option>-->
-<!--					<option value="2">5</option>-->
-<!--				  </select>-->
-<!--				</div>-->
-<!--				<div class="ps-shoe__detail"><a class="ps-shoe__name" href="product-detai.html">Air Jordan 7 Retro</a>-->
-<!--				  <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>-->
-<!--				</div>-->
-<!--			  </div>-->
-<!--			</div>-->
-<!--		  </div>-->
-<!--		  <div class="ps-shoes&#45;&#45;carousel">-->
-<!--			<div class="ps-shoe">-->
-<!--			  <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/4.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
-<!--			  </div>-->
-<!--			  <div class="ps-shoe__content">-->
-<!--				<div class="ps-shoe__variants">-->
-<!--				  <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>-->
-<!--				  <select class="ps-rating ps-shoe__rating">-->
-<!--					<option value="1">1</option>-->
-<!--					<option value="1">2</option>-->
-<!--					<option value="1">3</option>-->
-<!--					<option value="1">4</option>-->
-<!--					<option value="2">5</option>-->
-<!--				  </select>-->
-<!--				</div>-->
-<!--				<div class="ps-shoe__detail"><a class="ps-shoe__name" href="product-detai.html">Air Jordan 7 Retro</a>-->
-<!--				  <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>-->
-<!--				</div>-->
-<!--			  </div>-->
-<!--			</div>-->
-<!--		  </div>-->
-<!--		  <div class="ps-shoes&#45;&#45;carousel">-->
-<!--			<div class="ps-shoe">-->
-<!--			  <div class="ps-shoe__thumbnail">-->
-<!--				<div class="ps-badge"><span>New</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/5.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
-<!--			  </div>-->
-<!--			  <div class="ps-shoe__content">-->
-<!--				<div class="ps-shoe__variants">-->
-<!--				  <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>-->
-<!--				  <select class="ps-rating ps-shoe__rating">-->
-<!--					<option value="1">1</option>-->
-<!--					<option value="1">2</option>-->
-<!--					<option value="1">3</option>-->
-<!--					<option value="1">4</option>-->
-<!--					<option value="2">5</option>-->
-<!--				  </select>-->
-<!--				</div>-->
-<!--				<div class="ps-shoe__detail"><a class="ps-shoe__name" href="product-detai.html">Air Jordan 7 Retro</a>-->
-<!--				  <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>-->
-<!--				</div>-->
-<!--			  </div>-->
-<!--			</div>-->
-<!--		  </div>-->
-<!--		  <div class="ps-shoes&#45;&#45;carousel">-->
-<!--			<div class="ps-shoe">-->
-<!--			  <div class="ps-shoe__thumbnail"><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/6.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.php"></a>-->
-<!--			  </div>-->
-<!--			  <div class="ps-shoe__content">-->
-<!--				<div class="ps-shoe__variants">-->
-<!--				  <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>-->
-<!--				  <select class="ps-rating ps-shoe__rating">-->
-<!--					<option value="1">1</option>-->
-<!--					<option value="1">2</option>-->
-<!--					<option value="1">3</option>-->
-<!--					<option value="1">4</option>-->
-<!--					<option value="2">5</option>-->
-<!--				  </select>-->
-<!--				</div>-->
-<!--				<div class="ps-shoe__detail"><a class="ps-shoe__name" href="product-detai.html">Air Jordan 7 Retro</a>-->
-<!--				  <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price"> £ 120</span>-->
-<!--				</div>-->
-<!--			  </div>-->
-<!--			</div>-->
-<!--		  </div>-->
 		</div>
 	  </div>
 	</div>
   </div>
 
 </main>
+<script>
+//goodsid没有传到php
+    function add_cart(id) {
+        var goods_id=id;
+        // $.ajax({
+        //     type:'post',
+        //     url:'addcart.php',
+        //     data() {
+        //         goodsid:"goods_id"
+        //     },
+        //     success:function () {{
+        //         alert('success');
+        //     }
+        //     }
+        // });
+        window.location.href='addcart.php?no='+goods_id';
+    }
+</script>
 <!-- JS Library-->
 <script type="text/javascript" src="plugins/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
