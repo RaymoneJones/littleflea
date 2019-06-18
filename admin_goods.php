@@ -80,7 +80,7 @@
                     <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">管理</a>
                         <div class="mega-menu">
                             <div class="mega-wrap">
-                                <div class="mega-column">
+                                <div class="mega-column" style="margin-left: 50%">
                                     <ul class="mega-item mega-features">
                                         <li><a href="admin_registration.php">校内注册审核</a></li>
                                         <li><a href="admin_out.php">校外注册审核</a></li>
