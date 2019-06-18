@@ -86,31 +86,13 @@ session_start();
 			<div class="navigation__column center">
 				<ul class="main-menu menu">
 					<li class="menu-item menu-item-has-children dropdown"><a href="index.php">首页</a>
-						<!--					<ul class="sub-menu">-->
-						<!--					  <li class="menu-item"><a href="index.html">Homepage #1</a></li>-->
-						<!--					  <li class="menu-item"><a href="#">Homepage #2</a></li>-->
-						<!--					  <li class="menu-item"><a href="#">Homepage #3</a></li>-->
-						<!--					</ul>-->
 					</li>
 					<li class="menu-item menu-item-has-children has-mega-menu"><a href="#">手机</a></li>
 					<li class="menu-item"><a href="#">数码</a></li>
 					<li class="menu-item"><a href="#">服装</a></li>
 					<li class="menu-item menu-item-has-children dropdown"><a href="#">美妆</a>
-						<!--					<ul class="sub-menu">-->
-						<!--					  <li class="menu-item menu-item-has-children dropdown"><a href="#">Blog-grid</a>-->
-						<!--							<ul class="sub-menu">-->
-						<!--							  <li class="menu-item"><a href="#">Blog Grid 1</a></li>-->
-						<!--							  <li class="menu-item"><a href="#">Blog Grid 2</a></li>-->
-						<!--							</ul>-->
-						<!--					  </li>-->
-						<!--					  <li class="menu-item"><a href="#">Blog List</a></li>-->
-						<!--					</ul>-->
 					</li>
 					<li class="menu-item menu-item-has-children dropdown"><a href="#">运动</a>
-						<!--					<ul class="sub-menu">-->
-						<!--					  <li class="menu-item"><a href="#">Contact Us #1</a></li>-->
-						<!--					  <li class="menu-item"><a href="#">Contact Us #2</a></li>-->
-						<!--					</ul>-->
 					</li>
 					<li class="menu-item"><a href="#">教辅</a></li>
 					<li class="menu-item menu-item-has-children has-mega-menu"><a href="#">全部分类</a>
@@ -160,19 +142,8 @@ session_start();
 										<li><a href="product-listing.html">教辅</a></li>
 										<li><a href="product-listing.html">家教</a></li>
 										<li><a href="product-listing.html">自习</a></li>
-										<!--                                        <li><a href="product-listing.html">Pants & Tights</a></li>-->
-										<!--                                        <li><a href="product-listing.html">Shorts</a></li>-->
 									</ul>
 								</div>
-								<!--                                <div class="mega-column">-->
-								<!--                                    &lt;!&ndash;                        					  <h4 class="mega-heading">BRAND</h4>&ndash;&gt;-->
-								<!--                                    <ul class="mega-item mega-features">-->
-								<!--                                        <li><a href="product-listing.html">NIKE</a></li>-->
-								<!--                                        <li><a href="product-listing.html">Adidas</a></li>-->
-								<!--                                        <li><a href="product-listing.html">Dior</a></li>-->
-								<!--                                        <li><a href="product-listing.html">B&G</a></li>-->
-								<!--                                    </ul>-->
-								<!--                                </div>-->
 							</div>
 						</div>
 					</li>
@@ -183,38 +154,43 @@ session_start();
 					<input class="form-control" type="text" placeholder="宝贝只需搜一下！">
 					<button><i class="ps-icon-search"></i></button>
 				</form>
-				<div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>3</i></span><i class="ps-icon-shopping-cart"></i></a>
-					<div class="ps-cart__listing">
-						<div class="ps-cart__content">
-							<!--				购物车项目1-->
-							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/充电器.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">vivo充电器</a>
-									<p><span>数量:<i>1</i></span><span>总价:<i>￥25</i></span></p>
-								</div>
-							</div>
-							<!--				购物车项目2-->
-							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/鞋.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">李宁跑鞋</a>
-									<p><span>数量:<i>1</i></span><span>总价:<i>￥70</i></span></p>
-								</div>
-							</div>
-							<!--				购物车项目3-->
-							<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-								<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/吉他.jpg" alt=""></div>
-								<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">Taylor吉他</a>
-									<p><span>数量:<i>1</i></span><span>总价:<i>￥800</i></span></p>
-								</div>
-							</div>
-						</div>
-						<!--			  总价-->
-						<div class="ps-cart__total">
-							<p>件数:<span>3</span></p>
-							<p>合计:<span>￥895.00</span></p>
-						</div>
-						<div class="ps-cart__footer"><a class="ps-btn" href="shopping-cart.php">去结算<i class="ps-icon-arrow-left"></i></a></div>
-					</div>
+				<div class="ps-cart"><a class="ps-cart__toggle" href="#"><i class="ps-icon-shopping-cart"></i></a>
+                    <div class="ps-cart__listing">
+                        <div class="ps-cart__content">
+                            <?php
+                            //                            购物车
+                            $userid=$_SESSION['no'];
+                            $all=0;
+                            $allnum=0;
+                            $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+                            $sql="select * from tb_goods,tb_cart where tb_cart.userid='$userid' and tb_cart.goods_id=tb_goods.no and status=1";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $total=$row['num']*$row['goods_price'];
+                                    $all+=$total;
+                                    $allnum+=$row['num'];
+                                    echo '<div class="ps-cart-item"><a class="ps-cart-item__close" href="shopping-cart.php"></a>
+                                        <div class="ps-cart-item__thumbnail"><a href="shopping-cart.php"></a><img src="picture/充电器.jpg" alt=""></div>
+                                        <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="shopping-cart.php">'.$row['goods_name'].'</a>
+                                            <p><span>数量:<i></i>'.$row['num'].'</span><span>总价:<i>￥'.$total.'</i></span></p>
+                                        </div>
+                                    </div>';
+                                }
+                            }
+
+                            ?>
+                            <!--			  总价-->
+                            <?php
+                            echo '<div class="ps-cart__total">
+                            <p>件数:<span>'.$allnum.'</span></p>
+                            <p>合计:<span>'.$all.'</span></p>
+                        </div>';
+                            ?>
+                        </div>
+
+                        <div class="ps-cart__footer"><a class="ps-btn" href="shopping-cart.php">去结算<i class="ps-icon-arrow-left"></i></a></div>
+                    </div>
 				</div>
 				<div class="menu-toggle"><span></span></div>
 			</div>
@@ -243,10 +219,6 @@ session_start();
 				  <div class="item"><img src="picture/2.jpg" alt=""></div>
 				  <div class="item"><img src="picture/3.jpg" alt=""></div>
 				  <div class="item"><img src="picture/4.jpg" alt=""></div>
-<!--				<div class="item"><img src="images/shoe-detail/2.jpg" alt=""></div>-->
-<!--				<div class="item"><img src="images/shoe-detail/3.jpg" alt=""></div>-->
-<!--				<div class="item"><img src="images/shoe-detail/3.jpg" alt=""></div>-->
-<!--				<div class="item"><img src="images/shoe-detail/3.jpg" alt=""></div>-->
 			  </div><a class="popup-youtube ps-product__video" href=""><img src="picture/吉他高清.jpg" alt=""><i class="fa fa-play"></i></a>
 			</div>
 			<div class="ps-product__image">
