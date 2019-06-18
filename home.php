@@ -1,8 +1,6 @@
 <!--已修改详情 未修改 购物车-->
 <?php
-$conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
-$sql="select * from tb_goods where goods_status='1'";
-$result = $conn->query($sql);
+session_start();
 ?>
 <!DOCTYPE html>
 <!--[if IE 7]><html class="ie ie7"><![endif]-->
@@ -142,36 +140,41 @@ $result = $conn->query($sql);
                     <input class="form-control" type="text" placeholder="宝贝只需搜一下！">
                     <button><i class="ps-icon-search"></i></button>
                 </form>
+
                 <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>3</i></span><i class="ps-icon-shopping-cart"></i></a>
                     <div class="ps-cart__listing">
                         <div class="ps-cart__content">
-                            <!--				购物车项目1-->
-                            <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                <div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/充电器.jpg" alt=""></div>
-                                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">vivo充电器</a>
-                                    <p><span>数量:<i>1</i></span><span>总价:<i>￥25</i></span></p>
-                                </div>
-                            </div>
-                            <!--				购物车项目2-->
-                            <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                <div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/鞋.jpg" alt=""></div>
-                                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">李宁跑鞋</a>
-                                    <p><span>数量:<i>1</i></span><span>总价:<i>￥70</i></span></p>
-                                </div>
-                            </div>
-                            <!--				购物车项目3-->
-                            <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                <div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/吉他.jpg" alt=""></div>
-                                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">Taylor吉他</a>
-                                    <p><span>数量:<i>1</i></span><span>总价:<i>￥800</i></span></p>
-                                </div>
-                            </div>
-                        </div>
+                            <?php
+//                            购物车
+                            $userid=$_SESSION['no'];
+                            $all=0;
+                            $allnum=0;
+                            $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+                            $sql="select * from tb_goods,tb_cart where tb_cart.userid='$userid' and tb_cart.goods_id=tb_goods.no";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $total=$row['num']*$row['goods_price'];
+                                    $all+=$total;
+                                    $allnum+=$row['num'];
+                                    echo '<div class="ps-cart-item"><a class="ps-cart-item__close" href="shopping-cart.php"></a>
+                                        <div class="ps-cart-item__thumbnail"><a href="shopping-cart.php"></a><img src="picture/充电器.jpg" alt=""></div>
+                                        <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="shopping-cart.php">'.$row['goods_name'].'</a>
+                                            <p><span>数量:<i></i>'.$row['num'].'</span><span>总价:<i>￥'.$total.'</i></span></p>
+                                        </div>
+                                    </div>';
+                                }
+                            }
+
+                            ?>
                         <!--			  总价-->
-                        <div class="ps-cart__total">
-                            <p>件数:<span>3</span></p>
-                            <p>合计:<span>￥895.00</span></p>
-                        </div>
+                            <?php
+                            echo '<div class="ps-cart__total">
+                            <p>件数:<span>'.$allnum.'</span></p>
+                            <p>合计:<span>'.$all.'</span></p>
+                        </div>';
+                            ?>
+
                         <div class="ps-cart__footer"><a class="ps-btn" href="shopping-cart.php">去结算<i class="ps-icon-arrow-left"></i></a></div>
                     </div>
                 </div>
@@ -230,6 +233,9 @@ $result = $conn->query($sql);
                         <div class="grid-sizer"></div>
 
                         <?php
+                        $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+                        $sql="select * from tb_goods where goods_status='1'";
+                        $result = $conn->query($sql);
                         if ($result->num_rows > 0) {
                             $a=array();
                             $i=0;
