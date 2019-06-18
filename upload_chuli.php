@@ -40,7 +40,7 @@ if ($goods_num == ''){
             $res_insert=mysqli_query( $conn, $sql_insert );
             if ($res_insert) {
                 echo "<script>alert('商品信息已提交，请等待管理员审核！\\n审核结果将在第一时间通过您预留邮箱发送，请注意查收 。'); </script>";
-                echo '<script>window.location=home.php</script>';
+                echo '<script>window.location.href="home.php";</script>';
             } else {
                 printf("Error: %s\n", mysqli_error($conn));
                 echo "<script>alert('提交失败，请联系管理员！'); history.go(-1)</script>";
