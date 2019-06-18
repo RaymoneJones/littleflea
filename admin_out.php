@@ -46,7 +46,7 @@
                     <p>顶部信息栏</p>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="header__actions"><a href="index.php">退出</a>
+                    <div class="header__actions"><a href="home_admin.html">退出</a>
                     </div>
                 </div>
             </div>

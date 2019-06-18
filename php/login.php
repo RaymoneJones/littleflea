@@ -29,7 +29,7 @@ if(isset($_POST['submit'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['no'] = $row['no'];
             $_SESSION['email'] = $row['email'];
-            echo "<meta http-equiv=\"refresh\" content=\"0;url=../home.html\">";
+            echo "<meta http-equiv=\"refresh\" content=\"0;url=../home.php\">";
         } else {
             echo " <meta http-equiv=\"refresh\" content=\"0;url=loginerror.php\">";
         }
@@ -56,7 +56,7 @@ if(isset($_POST['submit'])) {
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['no'] = $row['no'];
                 $_SESSION['email'] = $row['email'];
-                echo "<meta http-equiv=\"refresh\" content=\"0;url=../home.html\">";
+                echo "<meta http-equiv=\"refresh\" content=\"0;url=../home.php\">";
             } else {
                 echo " <meta http-equiv=\"refresh\" content=\"0;url=loginerror.php\">";
             }

@@ -1,19 +1,16 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
-
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
-
 <!-- Head BEGIN -->
 <head>
     <meta charset="utf-8">
-    <title>Shopping cart | Metronic Shop UI</title>
+    <title>购物车—“小跳蚤”二手交易平台</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -82,7 +79,6 @@ session_start();
 
 </head>
 <!-- Head END -->
-
 <!-- Body BEGIN -->
 <body class="ecommerce">
 <!-- BEGIN HEADER -->
@@ -94,22 +90,35 @@ session_start();
                     <p>顶部信息栏</p>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="header__actions"><a href="login.html">退出</a>
-                        <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">收藏夹<i class="fa fa-angle-down"></i></a>
+                    <div class="header__actions"><a href="index.php">退出</a>
+                        <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="collect.php" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">收藏夹<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"> 收藏1</a></li>
-                                <!--                                <img src="images/flag/usa.svg" alt="">-->
-                                <li><a href="#">收藏 2</a></li>
-                                <!--                                <img src="images/flag/singapore.svg" alt="">-->
-                                <li><a href="#">收藏 3</a></li>
-                                <!--                                <img src="images/flag/japan.svg" alt="">-->
+                                <?php
+                                $sql="select * from tb_collect,tb_goods where tb_collect.user_id = ".$_SESSION['no']." and tb_collect.status =1  and tb_collect.goods_id=tb_goods.no";
+                                $result=$conn->query($sql);
+                                $count=3;
+                                if($result->num_rows>0){
+                                    while($row=$result->fetch_assoc()){
+                                        if($count>0){
+                                            echo '<li><a href="collect.php">';
+                                            echo $row['goods_name'];
+                                            echo'</a></li>';
+                                            $count--;
+                                        }
+
+                                    }
+                                }
+                                echo'
+                                 <li><a href="collect.php">查看更多……</a></li>
+                               ';
+                                ?>
                             </ul>
                         </div>
-                        <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的<i class="fa fa-angle-down"></i></a>
+                        <div class="btn-group ps-dropdown"><a class="dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">我发布的</a></li>
-                                <li><a href="#">我卖出的</a></li>
-                                <li><a href="#">我买到的</a></li>
+                                <li><a href="my.php">我发布的</a></li>
+                                <li><a href="mysell.php">我卖出的</a></li>
+                                <li><a href="myin.php">我买到的</a></li>
                             </ul>
                         </div>
                     </div>
@@ -186,46 +195,50 @@ session_start();
                     <input class="form-control" type="text" placeholder="宝贝只需搜一下！">
                     <button><i class="ps-icon-search"></i></button>
                 </form>
-                <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>3</i></span><i class="ps-icon-shopping-cart"></i></a>
+
+                <div class="ps-cart"><a class="ps-cart__toggle" href="#"><i class="ps-icon-shopping-cart"></i></a>
                     <div class="ps-cart__listing">
                         <div class="ps-cart__content">
-                            <!--				购物车项目1-->
-                            <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                <div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/充电器.jpg" alt=""></div>
-                                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">vivo充电器</a>
-                                    <p><span>数量:<i>1</i></span><span>总价:<i>￥25</i></span></p>
-                                </div>
-                            </div>
-                            <!--				购物车项目2-->
-                            <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                <div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/鞋.jpg" alt=""></div>
-                                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">李宁跑鞋</a>
-                                    <p><span>数量:<i>1</i></span><span>总价:<i>￥70</i></span></p>
-                                </div>
-                            </div>
-                            <!--				购物车项目3-->
-                            <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                                <div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="picture/吉他.jpg" alt=""></div>
-                                <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">Taylor吉他</a>
-                                    <p><span>数量:<i>1</i></span><span>总价:<i>￥800</i></span></p>
-                                </div>
-                            </div>
+                            <?php
+                            //                            购物车
+                            $userid=$_SESSION['no'];
+                            $all=0;
+                            $allnum=0;
+
+                            $sql="select * from tb_goods,tb_cart where tb_cart.userid='$userid' and tb_cart.goods_id=tb_goods.no and status=1";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $total=$row['num']*$row['goods_price'];
+                                    $all+=$total;
+                                    $allnum+=$row['num'];
+                                    echo '<div class="ps-cart-item"><a class="ps-cart-item__close" href="shopping-cart.php"></a>
+                                        <div class="ps-cart-item__thumbnail"><a href="shopping-cart.php"></a><img src="picture/充电器.jpg" alt=""></div>
+                                        <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="shopping-cart.php">'.$row['goods_name'].'</a>
+                                            <p><span>数量:<i></i>'.$row['num'].'</span><span>总价:<i>￥'.$total.'</i></span></p>
+                                        </div>
+                                    </div>';
+                                }
+                            }
+
+                            ?>
+                            <!--			  总价-->
+                            <?php
+                            echo '<div class="ps-cart__total">
+                            <p>件数:<span>'.$allnum.'</span></p>
+                            <p>合计:<span>'.$all.'</span></p>
+                        </div>';
+                            ?>
+
+                            <div class="ps-cart__footer"><a class="ps-btn" href="shopping-cart.php">去结算<i class="ps-icon-arrow-left"></i></a></div>
                         </div>
-                        <!--			  总价-->
-                        <div class="ps-cart__total">
-                            <p>件数:<span>3</span></p>
-                            <p>合计:<span>￥895.00</span></p>
-                        </div>
-                        <div class="ps-cart__footer"><a class="ps-btn" href="shopping-cart.php">去结算<i class="ps-icon-arrow-left"></i></a></div>
                     </div>
+                    <div class="menu-toggle"><span></span></div>
                 </div>
-                <div class="menu-toggle"><span></span></div>
             </div>
-        </div>
     </nav>
 </header>
 <!-- Header END -->
-
 <div class="main">
     <div class="container">
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -249,7 +262,7 @@ session_start();
                                 $userid=$_SESSION['no'];
                                 $all=0;
                                 $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
-                                $sql="select * from tb_goods,tb_cart where tb_cart.userid='$userid' and tb_cart.goods_id=tb_goods.no";
+                                $sql="select * from tb_goods,tb_cart where tb_cart.userid='$userid' and tb_cart.goods_id=tb_goods.no and status=1";
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
@@ -301,8 +314,8 @@ session_start();
                             </ul>
                         </div>
                     </div>
-                    <button class="btn btn-default" type="submit">返回首页 <i class="fa fa-home"></i></button>
-                    <button class="btn btn-primary" type="submit">结算<i class="fa fa-check"></i></button>
+                    <a href="home.php"><button class="btn btn-default">返回首页<i class="fa fa-home"></i></button></a>
+                    <a href="payment.php"> <button class="btn btn-primary">结算<i class="fa fa-check"></i></button></a>
                 </div>
             </div>
             <!-- END CONTENT -->
@@ -317,7 +330,7 @@ session_start();
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                     <!--				  这里的网站还要改啊-->
-                    <p>Copyright &copy; 2019.Raymone Jones All rights reserved.<a href="http://134.175.95.174/littleflea/index.php" target="_blank" title="小跳蚤">小跳蚤</a> </p>
+                    <p>Copyright &copy; 2019.Raymone Jones All rights reserved.<a href="http://134.175.95.174/littleflea/home.php" target="_blank" title="小跳蚤">小跳蚤</a> </p>
                 </div>
             </div>
         </div>
@@ -371,10 +384,6 @@ session_start();
 <script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
 <!-- Custom scripts-->
 <script type="text/javascript" src="js/main.js"></script>
-
-
-
-
 <script type="text/javascript">
     jQuery(document).ready(function() {
         Layout.init();

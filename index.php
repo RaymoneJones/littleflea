@@ -1,6 +1,7 @@
 ﻿<!--已修改详情 未修改 购物车-->
 <!--6.16 0：01 修改未登录购物车-->
 <!--0：13 完善点击购物车跳登录-->
+<!--完善未登录的收藏夹和我的-->
 <?php
 $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
 $sql="select * from tb_goods where goods_status='1'";
@@ -53,21 +54,14 @@ $result = $conn->query($sql);
 				</div>
 				<div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
 					<div class="header__actions"><a href="login.html">登录 & 注册</a>
-						<div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">收藏夹<i class="fa fa-angle-down"></i></a>
+						<div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="login.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">收藏夹<i class="fa fa-angle-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"> 收藏1</a></li>
-								<!--                                <img src="images/flag/usa.svg" alt="">-->
-								<li><a href="#">收藏 2</a></li>
-								<!--                                <img src="images/flag/singapore.svg" alt="">-->
-								<li><a href="#">收藏 3</a></li>
-								<!--                                <img src="images/flag/japan.svg" alt="">-->
+								<li><a href="login.html">登录后查看</a></li>
 							</ul>
 						</div>
-						<div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的<i class="fa fa-angle-down"></i></a>
+						<div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="login.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的<i class="fa fa-angle-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">我发布的</a></li>
-								<li><a href="#">我卖出的</a></li>
-								<li><a href="#">我买到的</a></li>
+								<li><a href="login.html">登录后查看</a></li>
 							</ul>
 						</div>
 					</div>
@@ -324,20 +318,6 @@ $result = $conn->query($sql);
 
 		window.location.href='product-detail.php?no='+goodsname+'';
 
-		//     $.ajax({
-		//         type:"POST",
-		//         url:"data.php",
-		//
-		//         data:{
-		//             no:goodsname;
-		// }
-		// })
-	}
-
-	// $(".myform").click(function(){
-	//     var goodsname=this.id;
-	//
-	// });
 </script>
 </body>
 </html>

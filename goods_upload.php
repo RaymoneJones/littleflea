@@ -328,23 +328,15 @@
 
         }
     }
-
     )
-
-
-
 </script>
 <script>
     $("#example-1").on("change", function(e){
         var val = $('#example-1').selectivity('value');
         document.getElementById("goods_class").value=val;
-
         // document.write(val);
     });
-
-
-    </script>
-
+</script>
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script src="javascripts/selectivity-jquery.js"></script>
 <script src="javascripts/main.js"></script>

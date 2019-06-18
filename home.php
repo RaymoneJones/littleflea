@@ -1,6 +1,7 @@
-<!--已修改详情 未修改 购物车-->
+<!---->
 <?php
 session_start();
+$conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
 ?>
 <!DOCTYPE html>
 <!--[if IE 7]><html class="ie ie7"><![endif]-->
@@ -48,22 +49,35 @@ session_start();
                     <p>顶部信息栏</p>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="header__actions"><a href="login.html">退出</a>
-                        <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">收藏夹<i class="fa fa-angle-down"></i></a>
+                    <div class="header__actions"><a href="index.php">退出</a>
+                        <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="collect.php" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">收藏夹<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"> 收藏1</a></li>
-                                <!--                                <img src="images/flag/usa.svg" alt="">-->
-                                <li><a href="#">收藏 2</a></li>
-                                <!--                                <img src="images/flag/singapore.svg" alt="">-->
-                                <li><a href="#">收藏 3</a></li>
-                                <!--                                <img src="images/flag/japan.svg" alt="">-->
+                                <?php
+                                $sql="select * from tb_collect,tb_goods where tb_collect.user_id = ".$_SESSION['no']." and tb_collect.status =1  and tb_collect.goods_id=tb_goods.no";
+                                $result=$conn->query($sql);
+                                $count=3;
+                                if($result->num_rows>0){
+                                    while($row=$result->fetch_assoc()){
+                                        if($count>0){
+                                            echo '<li><a href="collect.php">';
+                                            echo $row['goods_name'];
+                                            echo'</a></li>';
+                                            $count--;
+                                        }
+
+                                    }
+                                }
+                                echo'
+                                 <li><a href="collect.php">查看更多……</a></li>
+                               ';
+                                ?>
                             </ul>
                         </div>
-                        <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的<i class="fa fa-angle-down"></i></a>
+                        <div class="btn-group ps-dropdown"><a class="dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">我发布的</a></li>
-                                <li><a href="#">我卖出的</a></li>
-                                <li><a href="#">我买到的</a></li>
+                                <li><a href="my.php">我发布的</a></li>
+                                <li><a href="mysell.php">我卖出的</a></li>
+                                <li><a href="myin.php">我买到的</a></li>
                             </ul>
                         </div>
                     </div>
@@ -141,7 +155,7 @@ session_start();
                     <button><i class="ps-icon-search"></i></button>
                 </form>
 
-                <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>3</i></span><i class="ps-icon-shopping-cart"></i></a>
+                <div class="ps-cart"><a class="ps-cart__toggle" href="#"><i class="ps-icon-shopping-cart"></i></a>
                     <div class="ps-cart__listing">
                         <div class="ps-cart__content">
                             <?php
@@ -149,8 +163,8 @@ session_start();
                             $userid=$_SESSION['no'];
                             $all=0;
                             $allnum=0;
-                            $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
-                            $sql="select * from tb_goods,tb_cart where tb_cart.userid='$userid' and tb_cart.goods_id=tb_goods.no";
+
+                            $sql="select * from tb_goods,tb_cart where tb_cart.userid='$userid' and tb_cart.goods_id=tb_goods.no and status=1";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
