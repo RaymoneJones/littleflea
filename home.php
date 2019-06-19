@@ -80,6 +80,7 @@ $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链�
                                 <li><a href="myin.php">我买到的</a></li>
                             </ul>
                         </div>
+                        <div class="btn-group"><a href="goods_upload.php">商品上架</a></div>
                     </div>
                 </div>
             </div>
