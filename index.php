@@ -80,52 +80,52 @@ $result = $conn->query($sql);
 			<div class="navigation__column center">
 				<ul class="main-menu menu">
 					<li class="menu-item"><a href="index.php">首页</a></li>
-					<li class="menu-item "><a href="#">手机</a></li>
-					<li class="menu-item"><a href="#">数码</a></li>
-					<li class="menu-item"><a href="#">服装</a></li>
-					<li class="menu-item "><a href="#">美妆</a></li>
-					<li class="menu-item "><a href="#">运动</a></li>
-					<li class="menu-item"><a href="#">教辅</a></li>
+					<li class="menu-item "><a href="search.php?name=手机数码">手机</a></li>
+					<li class="menu-item"><a href="search.php?name=数码">数码</a></li>
+					<li class="menu-item"><a href="search.php?name= 装">服装</a></li>
+					<li class="menu-item "><a href="search.php?name=美妆">美妆</a></li>
+					<li class="menu-item "><a href="search.php?name=运动户外">运动</a></li>
+					<li class="menu-item"><a href="search.php?name=教辅">教辅</a></li>
 					<li class="menu-item menu-item-has-children has-mega-menu"><a href="#">全部分类</a>
 						<div class="mega-menu">
 							<div class="mega-wrap">
 								<div class="mega-column">
 									<ul class="mega-item mega-features">
-										<li><a href="product-listing.html">手机数码</a></li>
-										<li><a href="product-listing.html">生活百货</a></li>
-										<li><a href="product-listing.html">家用电器</a></li>
-										<li><a href="product-listing.html">运动户外</a></li>
-										<li><a href="product-listing.html">家具/饰品</a></li>
-										<li><a href="product-listing.html">游戏装备</a></li>
+										<li><a href="search.php?name=手机数码">手机数码</a></li>
+										<li><a href="search.php?name=生活百货">生活百货</a></li>
+										<li><a href="search.php?name=家用电器">家用电器</a></li>
+										<li><a href="search.php?name=运动户外">运动户外</a></li>
+										<li><a href="search.php?name=家具/饰品">家具/饰品</a></li>
+										<li><a href="search.php?name=游戏装备">游戏装备</a></li>
 									</ul>
 								</div>
 								<div class="mega-column">
 									<ul class="mega-item mega-features">
-										<li><a href="product-listing.html">男装</a></li>
-										<li><a href="product-listing.html">男鞋</a></li>
-										<li><a href="product-listing.html">女装</a></li>
-										<li><a href="product-listing.html">女鞋</a></li>
-										<li><a href="product-listing.html">美妆</a></li>
-										<li><a href="product-listing.html">箱包</a></li>
-										<li><a href="product-listing.html">服饰配件</a></li>
+										<li><a href="search.php?name=男装">男装</a></li>
+										<li><a href="search.php?name=男鞋">男鞋</a></li>
+										<li><a href="search.php?name=女装">女装</a></li>
+										<li><a href="search.php?name=女鞋">女鞋</a></li>
+										<li><a href="search.php?name=美妆">美妆</a></li>
+										<li><a href="search.php?name=箱包">箱包</a></li>
+										<li><a href="search.php?name=服饰配件">服饰配件</a></li>
 									</ul>
 								</div>
 								<div class="mega-column">
 									<ul class="mega-item mega-features">
-										<li><a href="product-listing.html">乐器</a></li>
-										<li><a href="product-listing.html">健身</a></li>
-										<li><a href="product-listing.html">玩具</a></li>
-										<li><a href="product-listing.html">宠物</a></li>
-										<li><a href="product-listing.html">园艺</a></li>
+										<li><a href="search.php?name=乐器">乐器</a></li>
+										<li><a href="search.php?name=健身">健身</a></li>
+										<li><a href="search.php?name=玩具">玩具</a></li>
+										<li><a href="search.php?name=宠物">宠物</a></li>
+										<li><a href="search.php?name=园艺">园艺</a></li>
 									</ul>
 								</div>
 								<div class="mega-column">
 									<ul class="mega-item mega-features">
-										<li><a href="product-listing.html">课本</a></li>
-										<li><a href="product-listing.html">习题</a></li>
-										<li><a href="product-listing.html">教辅</a></li>
-										<li><a href="product-listing.html">家教</a></li>
-										<li><a href="product-listing.html">自习</a></li>
+										<li><a href="search.php?name=课本">课本</a></li>
+										<li><a href="search.php?name=习题">习题</a></li>
+										<li><a href="search.php?name=教辅">教辅</a></li>
+										<li><a href="search.php?name=家教">家教</a></li>
+										<li><a href="search.php?name=自习">自习</a></li>
 									</ul>
 								</div>
 							</div>
@@ -134,8 +134,8 @@ $result = $conn->query($sql);
 				</ul>
 			</div>
 			<div class="navigation__column right">
-				<form class="ps-search--header" action="do_action" method="post">
-					<input class="form-control" type="text" placeholder="宝贝只需搜一下！">
+				<form class="ps-search--header" action="product-listing.php" method="post">
+					<input class="form-control" type="text" id="se" name="se" placeholder="宝贝只需搜一下！">
 					<button><i class="ps-icon-search"></i></button>
 				</form>
 				<div class="ps-cart"><a class="ps-cart__toggle" href="#"><i class="ps-icon-shopping-cart"></i></a>
@@ -185,12 +185,12 @@ $result = $conn->query($sql);
 			<div class="ps-section__header mb-50">
 				<h3 class="ps-section__title" >新鲜发布</h3>
 				<ul class="ps-masonry__filter">
-					<li class="current"><a href="#" data-filter="*">全部<sup>8</sup></a></li>
-					<li><a href="#" data-filter=".nike">手机数码 <sup>1</sup></a></li>
-					<li><a href="#" data-filter=".adidas">服饰美妆 <sup>1</sup></a></li>
-					<li><a href="#" data-filter=".men">运动户外 <sup>1</sup></a></li>
-					<li><a href="#" data-filter=".women">生活百货 <sup>1</sup></a></li>
-					<li><a href="#" data-filter=".kids">学习资料 <sup>4</sup></a></li>
+					<li class="current"><a href="#" data-filter="*">全部<sup></sup></a></li>
+					<li><a href="#" data-filter=".nike">手机数码 <sup></sup></a></li>
+					<li><a href="#" data-filter=".adidas">服饰美妆 <sup></sup></a></li>
+					<li><a href="#" data-filter=".men">运动户外 <sup></sup></a></li>
+					<li><a href="#" data-filter=".women">生活百货 <sup></sup></a></li>
+					<li><a href="#" data-filter=".kids">学习资料 <sup></sup></a></li>
 					<!--			sup上标效果sub下标-->
 				</ul>
 			</div>
@@ -201,32 +201,29 @@ $result = $conn->query($sql);
 
 						<?php
                         if ($result->num_rows > 0) {
-						$a=array();
+//						$a=array();
 						$i=0;
 						while ($row = $result->fetch_assoc()) {
-
 						//                                array_push($a,$row['no']);
-						echo '<form onclick="getname(this.id)" id="'.$row['no'].'" >'
-						?>
+                            echo '<form onclick="getname(this.id)" id="'.$row['no'].'" >'
+                            ?>
 
-						<div class="grid-item nike" >
-							<div class="grid-item__content-wrapper">
-								<div class="ps-shoe mb-30">
-									<div class="ps-shoe__thumbnail">
-										<a class="ps-shoe__favorite" href="#"><i
-												class="ps-icon-heart"></i></a><img  src="images/shoe/2.jpg"
-																					alt=""><a
-											class="ps-shoe__overlay" ></a>
-										<!--                                                    <a  href="product-detail.html"></a>-->
-										<!--                                                   -->
+                            <div class="grid-item nike" >
+                                <div class="grid-item__content-wrapper">
+                                    <div class="ps-shoe mb-30">
+                                        <div class="ps-shoe__thumbnail">
+                                            <a class="ps-shoe__favorite" href="#"><i
+                                                        class="ps-icon-heart"></i></a><img  src="<?php echo $row['goods_img'];?>"
+                                                                                            alt=""><a
+                                                    class="ps-shoe__overlay" ></a>
 									</div>
 									<div class="ps-shoe__content">
 										<div class="ps-shoe__variants">
-											<div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg"
-																					  alt=""><img
-													src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg"
-																						alt=""><img
-													src="images/shoe/5.jpg" alt=""></div>
+<!--											<div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg"-->
+<!--																					  alt=""><img-->
+<!--													src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg"-->
+<!--																						alt=""><img-->
+<!--													src="images/shoe/5.jpg" alt=""></div>-->
 											<select class="ps-rating ps-shoe__rating">
 												<option value="1">1</option>
 												<option value="1">2</option>
@@ -312,12 +309,26 @@ $result = $conn->query($sql);
 
 <script>
 
-	function getname(id){
-		// document.getElementById('text').value=id;
-		var goodsname=id;
+    function getname(id){
+        // document.getElementById('text').value=id;
+        var goodsname=id;
 
-		window.location.href='product-detail.php?no='+goodsname+'';
+        window.location.href='product-detail.php?no='+goodsname+'';
 
+        //     $.ajax({
+        //         type:"POST",
+        //         url:"data.php",
+        //
+        //         data:{
+        //             no:goodsname;
+        // }
+        // })
+    }
+
+    // $(".myform").click(function(){
+    //     var goodsname=this.id;
+    //
+    // });
 </script>
 </body>
 </html>

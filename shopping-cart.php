@@ -1,5 +1,6 @@
 <?php
 session_start();
+$conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -33,13 +34,13 @@ session_start();
     <!-- Fonts END -->
 
     <!-- Global styles START -->
-    <!--  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
-    <!--  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+      <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+      <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <!--  <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">-->
+      <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
     <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
     <link href="assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
@@ -148,41 +149,41 @@ session_start();
                             <div class="mega-wrap">
                                 <div class="mega-column">
                                     <ul class="mega-item mega-features">
-                                        <li><a href="product-listing.html">手机数码</a></li>
-                                        <li><a href="product-listing.html">生活百货</a></li>
-                                        <li><a href="product-listing.html">家用电器</a></li>
-                                        <li><a href="product-listing.html">运动户外</a></li>
-                                        <li><a href="product-listing.html">家具/饰品</a></li>
-                                        <li><a href="product-listing.html">游戏装备</a></li>
+                                        <li><a href="search.php?name=手机数码">手机数码</a></li>
+                                        <li><a href="search.php?name=生活百货">生活百货</a></li>
+                                        <li><a href="search.php?name=家用电器">家用电器</a></li>
+                                        <li><a href="search.php?name=运动户外">运动户外</a></li>
+                                        <li><a href="search.php?name=家具/饰品">家具/饰品</a></li>
+                                        <li><a href="search.php?name=游戏装备">游戏装备</a></li>
                                     </ul>
                                 </div>
                                 <div class="mega-column">
                                     <ul class="mega-item mega-features">
-                                        <li><a href="product-listing.html">男装</a></li>
-                                        <li><a href="product-listing.html">男鞋</a></li>
-                                        <li><a href="product-listing.html">女装</a></li>
-                                        <li><a href="product-listing.html">女鞋</a></li>
-                                        <li><a href="product-listing.html">美妆</a></li>
-                                        <li><a href="product-listing.html">箱包</a></li>
-                                        <li><a href="product-listing.html">服饰配件</a></li>
+                                        <li><a href="search.php?name=男装">男装</a></li>
+                                        <li><a href="search.php?name=男鞋">男鞋</a></li>
+                                        <li><a href="search.php?name=女装">女装</a></li>
+                                        <li><a href="search.php?name=女鞋">女鞋</a></li>
+                                        <li><a href="search.php?name=美妆">美妆</a></li>
+                                        <li><a href="search.php?name=箱包">箱包</a></li>
+                                        <li><a href="search.php?name=服饰配件">服饰配件</a></li>
                                     </ul>
                                 </div>
                                 <div class="mega-column">
                                     <ul class="mega-item mega-features">
-                                        <li><a href="product-listing.html">乐器</a></li>
-                                        <li><a href="product-listing.html">健身</a></li>
-                                        <li><a href="product-listing.html">玩具</a></li>
-                                        <li><a href="product-listing.html">宠物</a></li>
-                                        <li><a href="product-listing.html">园艺</a></li>
+                                        <li><a href="search.php?name=乐器">乐器</a></li>
+                                        <li><a href="search.php?name=健身">健身</a></li>
+                                        <li><a href="search.php?name=玩具">玩具</a></li>
+                                        <li><a href="search.php?name=宠物">宠物</a></li>
+                                        <li><a href="search.php?name=园艺">园艺</a></li>
                                     </ul>
                                 </div>
                                 <div class="mega-column">
                                     <ul class="mega-item mega-features">
-                                        <li><a href="product-listing.html">课本</a></li>
-                                        <li><a href="product-listing.html">习题</a></li>
-                                        <li><a href="product-listing.html">教辅</a></li>
-                                        <li><a href="product-listing.html">家教</a></li>
-                                        <li><a href="product-listing.html">自习</a></li>
+                                        <li><a href="search.php?name=课本">课本</a></li>
+                                        <li><a href="search.php?name=习题">习题</a></li>
+                                        <li><a href="search.php?name=教辅">教辅</a></li>
+                                        <li><a href="search.php?name=家教">家教</a></li>
+                                        <li><a href="search.php?name=自习">自习</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -213,7 +214,7 @@ session_start();
                                     $all+=$total;
                                     $allnum+=$row['num'];
                                     echo '<div class="ps-cart-item"><a class="ps-cart-item__close" href="shopping-cart.php"></a>
-                                        <div class="ps-cart-item__thumbnail"><a href="shopping-cart.php"></a><img src="picture/充电器.jpg" alt=""></div>
+                                        <div class="ps-cart-item__thumbnail"><a href="shopping-cart.php"></a><img src="'.$row['goods_img'].'" alt=""></div>
                                         <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="shopping-cart.php">'.$row['goods_name'].'</a>
                                             <p><span>数量:<i></i>'.$row['num'].'</span><span>总价:<i>￥'.$total.'</i></span></p>
                                         </div>
@@ -342,17 +343,17 @@ session_start();
 <!--[if lt IE 9]>
 <script src="assets/plugins/respond.min.js"></script>
 <![endif]-->
-<!--    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>-->
+    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<!--    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      -->
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
 <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-<!--    <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script>
     <script src='assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script> -->
+    <script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
 <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <script src="assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->

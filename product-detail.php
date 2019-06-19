@@ -100,36 +100,36 @@ session_start();
 							<div class="mega-wrap">
 								<div class="mega-column">
 									<ul class="mega-item mega-features">
-										<li><a href="product-listing.html">手机数码</a></li>
-										<li><a href="product-listing.html">生活百货</a></li>
-										<li><a href="product-listing.html">家用电器</a></li>
-										<li><a href="product-listing.html">运动户外</a></li>
-										<li><a href="product-listing.html">家具/饰品</a></li>
-										<li><a href="product-listing.html">游戏装备</a></li>
+										<li><a href="product-listing.php">手机数码</a></li>
+										<li><a href="product-listing.php">生活百货</a></li>
+										<li><a href="product-listing.php">家用电器</a></li>
+										<li><a href="product-listing.php">运动户外</a></li>
+										<li><a href="product-listing.php">家具/饰品</a></li>
+										<li><a href="product-listing.php">游戏装备</a></li>
 										<!--                                        <li><a href="product-listing.html">FAN GEAR</a></li>-->
 									</ul>
 								</div>
 								<div class="mega-column">
 									<!--                        					  <h4 class="mega-heading">Shoes</h4>-->
 									<ul class="mega-item mega-features">
-										<li><a href="product-listing.html">男装</a></li>
-										<li><a href="product-listing.html">男鞋</a></li>
-										<li><a href="product-listing.html">女装</a></li>
-										<li><a href="product-listing.html">女鞋</a></li>
-										<li><a href="product-listing.html">美妆</a></li>
-										<li><a href="product-listing.html">箱包</a></li>
-										<li><a href="product-listing.html">服饰配件</a></li>
+										<li><a href="product-listing.php">男装</a></li>
+										<li><a href="product-listing.php">男鞋</a></li>
+										<li><a href="product-listing.php">女装</a></li>
+										<li><a href="product-listing.php">女鞋</a></li>
+										<li><a href="product-listing.php">美妆</a></li>
+										<li><a href="product-listing.php">箱包</a></li>
+										<li><a href="product-listing.php">服饰配件</a></li>
 										<!--                                        <li><a href="product-listing.html">Baseball</a></li>-->
 									</ul>
 								</div>
 								<div class="mega-column">
 									<!--                        					  <h4 class="mega-heading">CLOTHING</h4>-->
 									<ul class="mega-item mega-features">
-										<li><a href="product-listing.html">乐器</a></li>
-										<li><a href="product-listing.html">健身</a></li>
-										<li><a href="product-listing.html">玩具</a></li>
-										<li><a href="product-listing.html">宠物</a></li>
-										<li><a href="product-listing.html">园艺</a></li>
+										<li><a href="product-listing.php">乐器</a></li>
+										<li><a href="product-listing.php">健身</a></li>
+										<li><a href="product-listing.php">玩具</a></li>
+										<li><a href="product-listing.php">宠物</a></li>
+										<li><a href="product-listing.php">园艺</a></li>
 										<!--                                        <li><a href="product-listing.html">Pants & Tights</a></li>-->
 										<!--                                        <li><a href="product-listing.html">Shorts</a></li>-->
 									</ul>
@@ -137,11 +137,11 @@ session_start();
 								<div class="mega-column">
 									<!--                        					  <h4 class="mega-heading">Accessories</h4>-->
 									<ul class="mega-item mega-features">
-										<li><a href="product-listing.html">课本</a></li>
-										<li><a href="product-listing.html">习题</a></li>
-										<li><a href="product-listing.html">教辅</a></li>
-										<li><a href="product-listing.html">家教</a></li>
-										<li><a href="product-listing.html">自习</a></li>
+										<li><a href="product-listing.php">课本</a></li>
+										<li><a href="product-listing.php">习题</a></li>
+										<li><a href="product-listing.php">教辅</a></li>
+										<li><a href="product-listing.php">家教</a></li>
+										<li><a href="product-listing.php">自习</a></li>
 									</ul>
 								</div>
 							</div>

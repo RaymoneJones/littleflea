@@ -8,9 +8,6 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <script src="http://www.jq22.com/jquery/vue.min.js"></script>
 
@@ -27,6 +24,23 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/selectivity-jquery.css">
     <style>
+        body
+        {
+            background-image:url("picture/flea.png");
+            background-repeat:no-repeat;
+            background-color: #00b4ef;
+        }
+        .mybt{
+            alignment: center;
+            font-size: 14px;
+            color: #fff;
+            background: #00b4ef;
+            border-radius: 30px;
+            padding: 10px 25px;
+            border: none;
+            text-transform: capitalize;
+            transition: all 0.5s ease 0s;
+        }
         .upload_warp_img_div_del {
             position: absolute;
             top: 6px;
@@ -132,26 +146,7 @@
             text-align: center;
         }
     </style>
-    <style>
-        body
-        {
-            background-image:url("picture/flea.png");
-            background-repeat:no-repeat;
-            background-color: #00b4ef;
-        }
-        .mybt{
-            alignment: center;
-            font-size: 14px;
-            color: #fff;
-            background: #00b4ef;
-            border-radius: 30px;
-            padding: 10px 25px;
-            border: none;
-            text-transform: capitalize;
-            transition: all 0.5s ease 0s;
-        }
 
-    </style>
 </head>
 <body>
 <div >
@@ -160,7 +155,8 @@
             <div class="col-md-offset-3 col-md-6">
                 <form id="formform" class="form-horizontal"  method="post" action="upload_chuli.php">
 <!--                    method="post" action="upload_chuli.php"-->
-                    <span class="heading">商品上架</span>
+
+                    <span class="heading">商品上架—基本信息</span>
                     <div class="form-group">
                         <input type="text" class="form-control" id="goods_name" name="goods_name" placeholder="商品名">
                     </div>
@@ -183,41 +179,10 @@
                         <div id="example-1" style="width: 100%;border-radius: 20px;"></div>
                         <input type="text"   id="goods_class"  name="goods_class" style="visibility: hidden">
                     </div>
-                    <div id="app">
-                        <div class="hello">
-                            <div class="upload">
-                                <div class="upload_warp">
-                                    <div class="upload_warp_left" @click="fileClick">
-                                        <img src="upload.png">
-                                    </div>
-                                    <div class="upload_warp_right" @drop="drop($event)" @dragenter="dragenter($event)" @dragover="dragover($event)">
-                                        或者将文件拖到此处
-                                    </div>
-                                </div>
-                                <div class="upload_warp_text">
-                                    选中{{imgList.length}}张文件，共{{bytesToSize(this.size)}}
-                                </div>
-                                <input @change="fileChange($event)" type="file" id="upload_file"  name="file" multiple style="display: none"/>
-                                <div class="upload_warp_img" v-show="imgList.length!=0">
-                                    <div class="upload_warp_img_div" v-for="(item,index) of imgList">
-                                        <div class="upload_warp_img_div_top">
-                                            <div class="upload_warp_img_div_text">
-                                                {{item.file.name}}
-                                            </div>
-                                            <img src="del.png" class="upload_warp_img_div_del" @click="fileDel(index)">
-                                        </div>
-                                        <img :src="item.file.src" >
-
-
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                    </div>
                     <br>
-                        <div align="center" >
-                            <button  type="submit" class="mybt">提交</button>
-                        </div>
+                    <div align="center" >
+                        <button  type="submit" class="mybt">下一步</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -226,6 +191,9 @@
 <script>
     //  import up from  './src/components/Hello'
    var tupian= new Array();
+    a(){
+        alert(tupian);
+    }
     var app = new Vue({
         el: '#app',
         data () {
@@ -293,8 +261,6 @@
                     reader.readAsDataURL(file);
                     reader.onload = function () {
                         file.src = this.result;
-                        tupian.push(file.src);
-                        // document.getElementById('test').value=file.src;
                         this.vue.imgList.push({
                             file
                         });
@@ -325,10 +291,8 @@
                 el.preventDefault();
                 this.fileList(el.dataTransfer);
             }
-
         }
-    }
-    )
+    })
 </script>
 <script>
     $("#example-1").on("change", function(e){

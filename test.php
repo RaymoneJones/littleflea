@@ -1,19 +1,59 @@
 <?php
-    session_start();
-    $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+session_start();
+$conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
 ?>
 <!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7"><![endif]-->
-<!--[if IE 8]><html class="ie ie8"><![endif]-->
-<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
+<!--<![endif]-->
+<!-- Head BEGIN -->
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>“小跳蚤”二手交易平台</title>
+    <title>购物车—“小跳蚤”二手交易平台</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta content="Metronic Shop UI description" name="description">
+    <meta content="Metronic Shop UI keywords" name="keywords">
+    <meta content="keenthemes" name="author">
+
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Fonts START -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    <!-- Fonts END -->
+
+    <!-- Global styles START -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Global styles END -->
+
+    <!-- Page level plugin styles START -->
+    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
+    <link href="assets/plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin styles END -->
+
+    <!-- Theme styles START -->
+    <link href="assets/pages/css/components.css" rel="stylesheet">
+    <link href="assets/corporate/css/style.css" rel="stylesheet">
+    <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
+    <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
+    <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+    <link href="assets/corporate/css/custom.css" rel="stylesheet">
+    <!--    下面是整体框架的head-->
     <!-- Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
@@ -29,19 +69,16 @@
     <link rel="stylesheet" href="plugins/revolution/css/settings.css">
     <link rel="stylesheet" href="plugins/revolution/css/layers.css">
     <link rel="stylesheet" href="plugins/revolution/css/navigation.css">
-    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
     <!-- Custom-->
     <link rel="stylesheet" href="css/style.css">
     <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--WARNING: Respond.js doesn't work if you view the page via file://-->
     <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 </head>
-<!--[if IE 7]><body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
-<!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
-<!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
-<body class="ps-loading">
-<div class="header--sidebar"></div>
+<!-- Head END -->
+<!-- Body BEGIN -->
+<body class="ecommerce">
+<!-- BEGIN HEADER -->
 <header class="header">
     <div class="header__top">
         <div class="container-fluid">
@@ -90,7 +127,7 @@
         <div class="container-fluid">
             <div class="navigation__column left">
                 <!--		  logo-->
-                <div class="header__logo"><a class="ps-logo" href="home_admin.html"><img src="picture/logo2.png" alt=""></a></div>
+                <div class="header__logo"><a class="ps-logo" href="index.php"><img src="picture/logo2.png" alt=""></a></div>
                 <!--		  picture/logo.png-->
             </div>
             <!--		菜单导航栏-->
@@ -198,33 +235,139 @@
             </div>
     </nav>
 </header>
-<!--主要内容-->
-<div>
-    <ul id="myTabP" class="nav nav-tabs">
-        <li class="active"><a href="#firstP" data-toggle="tab">我发布的</a></li>
-    </ul>
-    <div id="myTabContent3" class="tab-content" >
-        <div class="tab-pane fade in active" id="firstP" >
-            <table id="matter_table1" class="table table-bordered">
-            </table>
+<!-- Header END -->
+<div class="main">
+    <div class="container">
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <h1>购物车</h1>
+                <div class="goods-page">
+                    <div class="goods-data clearfix">
+                        <div class="table-wrapper-responsive">
+                            <table summary="Shopping cart">
+                                <tr>
+                                    <th class="goods-page-image"></th>
+                                    <th class="goods-page-description">商品信息</th>
+                                    <th class="goods-page-ref-no">商品编号</th>
+                                    <th class="goods-page-price">单价</th>
+                                    <th class="goods-page-quantity">数量</th>
+                                    <th class="goods-page-total" colspan="2">总价</th>
+                                </tr>
+                                <?php
+                                $userid=$_SESSION['no'];
+                                $all=0;
+                                $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+                                $sql="select * from tb_goods,tb_cart where tb_cart.userid='$userid' and tb_cart.goods_id=tb_goods.no and status=1";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $total=$row['num']*$row['goods_price'];
+                                        $all+=$total;
+                                        echo'
+                                                    <tr>
+                                                        <td class="goods-page-image">
+                                                          <a ><img src="assets/pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
+                                                        </td>
+                                                        <td class="goods-page-description">
+                                                          <h3><a href="product-detail.php">'.$row['goods_name'].'</a></h3>
+                                                          <p><strong>'.$row['goods_from'].'</strong>'.$row['goods_tag'].' </p>
+                                                          <em href="product-detail.php">更多信息</em>
+                                                        </td>
+                                                        <td class="goods-page-ref-no">
+                                                          '.$row['goods_id'].'
+                                                        </td>
+                                                        <td class="goods-page-price">
+                                                          <strong><span>￥</span>'.$row['goods_price'].'</strong>
+                                                        </td>
+                                                        <td class="goods-page-quantity">
+                                                          <div class="product-quantity">
+                                                              <input id="product-quantity" type="text" value="'.$row['num'].'" readonly class="form-control input-sm">
+                                                          </div>
+                                                        </td>
+                                                        <td class="goods-page-total">
+                                                       
+                                                          <strong><span>￥</span>'.$total.'</strong>
+                                                        </td>
+                                                        <td class="del-goods-col">
+                                                          <a class="del-goods" href=" ">&nbsp;</a>
+                                                        </td>
+                                                    </tr>';
+                                    }
+                                }
+                                ?>
+
+                            </table>
+                        </div>
+                        <div class="shopping-total">
+                            <ul>
+                                <li class="shopping-total-price">
+                                    <em>合计</em>
+                                    <strong class="price"><span>￥</span><?php
+                                        echo $all;
+                                        ?></strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="home.php"><button class="btn btn-default">返回首页<i class="fa fa-home"></i></button></a>
+                    <a href="payment.php"> <button class="btn btn-primary">结算<i class="fa fa-check"></i></button></a>
+                </div>
+            </div>
+            <!-- END CONTENT -->
         </div>
+        <!-- END SIDEBAR & CONTENT -->
     </div>
 </div>
-<!--主要内容结束-->
-<main class="ps-main">
-    <div class="ps-footer bg--cover" data-background="images/background/parallax.jpg">
-        <div class="ps-footer__copyright">
-            <div class="ps-container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                        <!--				  这里的网站还要改啊-->
-                        <p>Copyright &copy; 2019.Raymone Jones All rights reserved.<a href="http://134.175.95.174/littleflea/index.html" target="_blank" title="小跳蚤">小跳蚤</a> </p>
-                    </div>
+<!-- BEGIN FOOTER -->
+<div class="ps-footer bg--cover" data-background="images/background/parallax.jpg">
+    <div class="ps-footer__copyright">
+        <div class="ps-container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <!--				  这里的网站还要改啊-->
+                    <p>Copyright &copy; 2019.Raymone Jones All rights reserved.<a href="http://134.175.95.174/littleflea/home.php" target="_blank" title="小跳蚤">小跳蚤</a> </p>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>
+<!-- END FOOTER -->
+<!-- Load javascripts at bottom, this will reduce page load time -->
+<!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<![endif]-->
+<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+<script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+<script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+<script src='assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
+<script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
+<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
+
+<script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initImageZoom();
+        Layout.initTouchspin();
+        Layout.initUniform();
+        Layout.initSliderRange();
+    });
+</script>
+<!-- END PAGE LEVEL JAVASCRIPTS -->
 <!-- JS Library-->
 <script type="text/javascript" src="plugins/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -252,71 +395,6 @@
 <script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
 <!-- Custom scripts-->
 <script type="text/javascript" src="js/main.js"></script>
-<!--<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>-->
-<!--<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
-<!-- bootstrap-table.min.js -->
-<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>   <!--  -->
-<!-- 引入中文语言包 -->
-<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
-<script>
-    $('#matter_table1').bootstrapTable({
-            url: 'data/a_r_data.php?table=out',
-            method: "post",
-            dataType: "json",
-            height: 500,
-            striped: true, //是否显示行间隔色
-            pagination: true,                   //是否显示分页（*）
-            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
-            pageNumber: 1,                       //初始化加载第一页，默认第一页
-            pageSize: 8,                       //每页的记录行数（*）
-            pageList: [8,16, 24,32],        //可供选择的每页的行数（*）
-            showRefresh : true,//刷新按钮
-            showToggle:true,//显示一行是否改成竖着
-            showPaginationSwitch:true,//是否显示 下面的分页框
-            uniqueId: "no",                     //每一行的唯一标识，一般为主键列
-            toolbal:'#toolbar',
-            columns: [{
-                field: 'no',
-                title: '商品ID',
-                align: 'center'
-            }, {
-                field: 'goods_name',
-                title: '商品名',
-                align: 'center'
-            }, {
-                field: 'goods_from',
-                title: '品牌/产地',
-                align: 'center'
-            }, {
-                field: 'goods_detail',
-                title: '商品详情',
-                align: 'center'
-            }, {
-                field: 'goods_price',
-                title: '价格',
-                align: 'center'
-            }, {
-                field: 'goods_num',
-                title: '数量',
-                align: 'center'
-            }, {
-                field: 'goods_img',
-                title: '商品图片',
-                align: 'center'
-            }],
-            onLoadSuccess: function () {
-            },
-            onLoadError: function () {
-                showTips("数据加载失败！");
-            }
-        }
-
-    );
-</script>
-
 </body>
+<!-- END BODY -->
 </html>
-
-
-
-
