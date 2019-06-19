@@ -213,24 +213,30 @@ session_start();
 		<div class="col-lg-10 col-md-12 col-lg-offset-1">
 		  <div class="ps-product__thumbnail">
 <!--			  左侧预览列-->
-			<div class="ps-product__preview">
-			  <div class="ps-product__variants">
-				<div class="item"><img src="picture/吉他高清.jpg" alt=""></div>
-				  <div class="item"><img src="picture/2.jpg" alt=""></div>
-				  <div class="item"><img src="picture/3.jpg" alt=""></div>
-				  <div class="item"><img src="picture/4.jpg" alt=""></div>
-			  </div><a class="popup-youtube ps-product__video" href=""><img src="picture/吉他高清.jpg" alt=""><i class="fa fa-play"></i></a>
-			</div>
+<!--			<div class="ps-product__preview">-->
+<!--			  <div class="ps-product__variants">-->
+<!--				<div class="item"><img src="picture/吉他高清.jpg" alt=""></div>-->
+<!--				  <div class="item"><img src="picture/2.jpg" alt=""></div>-->
+<!--				  <div class="item"><img src="picture/3.jpg" alt=""></div>-->
+<!--				  <div class="item"><img src="picture/4.jpg" alt=""></div>-->
+<!--			  </div><a class="popup-youtube ps-product__video" href=""><img src="picture/吉他高清.jpg" alt=""><i class="fa fa-play"></i></a>-->
+<!--			</div>-->
 			<div class="ps-product__image">
-			  <div class="item"><img class="zoom" src="picture/吉他高清.jpg" alt="" data-zoom-image="picture/吉他高清.jpg"></div>
-			  <div class="item"><img class="zoom" src="picture/2.jpg" alt="" data-zoom-image="picture/2.jpg"></div>
-			  <div class="item"><img class="zoom" src="picture/3.jpg" alt="" data-zoom-image="picture/3.jpg"></div>
-				<div class="item"><img class="zoom" src="picture/4.jpg" alt="" data-zoom-image="picture/4.jpg"></div>
+                <?php
+                $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+                $sql="select * from tb_goods where no = ".$_GET['no']." ";
+                $result=$conn->query($sql);
+                $row = $result->fetch_assoc();
+                ?>
+			  <div class="item"><img class="zoom" src="<?php echo $row['goods_img'] ?>" alt="" data-zoom-image="<?php echo $row['goods_img'] ?>"></div>
+<!--			  <div class="item"><img class="zoom" src="picture/2.jpg" alt="" data-zoom-image="picture/2.jpg"></div>-->
+<!--			  <div class="item"><img class="zoom" src="picture/3.jpg" alt="" data-zoom-image="picture/3.jpg"></div>-->
+<!--				<div class="item"><img class="zoom" src="picture/4.jpg" alt="" data-zoom-image="picture/4.jpg"></div>-->
 			</div>
 		  </div>
 		  <div class="ps-product__thumbnail--mobile">
-			<div class="ps-product__main-img"><img src="picture/吉他高清.jpg" alt=""></div>
-			<div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on"><img src="picture/吉他高清.jpg" alt=""><img src="picture/2.jpg" alt=""><img src="picture/3.jpg" alt=""><img src="picture/4.jpg" alt=""></div>
+			<div class="ps-product__main-img"><img src="<?php echo $row['goods_img'] ?>" alt=""></div>
+			<div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on"><img src="<?php echo $row['goods_img'] ?>" alt=""></div>
 		  </div>
 		  <div class="ps-product__info">
 			<div class="ps-product__rating">
@@ -245,10 +251,10 @@ session_start();
 			</div>
               <?php
 //              <del>￥'.$row["goods_price"].'</del>
-                    $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
-                    $sql="select * from tb_goods where no = ".$_GET['no']." ";
-                    $result=$conn->query($sql);
-                    $row = $result->fetch_assoc();
+//                    $conn = mysqli_connect("localhost","root","123456","flea") or die("数据库链接错误".mysqli_error());
+//                    $sql="select * from tb_goods where no = ".$_GET['no']." ";
+//                    $result=$conn->query($sql);
+//                    $row = $result->fetch_assoc();
               echo '<h1>'.$row["goods_name"].'</h1>
                            <input type="text" style="visibility: hidden" name="goods_no" id="'.$row['no'].'" >
 
